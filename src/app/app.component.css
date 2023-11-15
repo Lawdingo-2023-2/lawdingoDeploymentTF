@@ -1,21 +1,16 @@
 .example-spacer {
     flex: 1 1 auto;
   }
-.drawer1{
-  background-color: white;
-  
-  height: 95%;
 
-}
 .nav{
     background-color: rgb(64, 164, 177);
+    height: 100%;
   }
-.head{
-    color: #7C70C7;;
-}
+
 .nav .col1{
     color: white;
     font-size: 15px;
+    
 }
 
 .nav_menu{

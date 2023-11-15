@@ -16,9 +16,9 @@
   </nav>
 </mat-toolbar>
 
-<mat-drawer-container class="drawer1">
+<mat-drawer-container >
   <mat-drawer class="nav" #drawer opened="true" mode="side" position="start">
-    <mat-nav-list *ngIf="verificar()">
+    <mat-nav-list *ngIf="verificar()" >
       <mat-list-item class="col1" [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button
           
@@ -79,7 +79,6 @@
       </mat-list-item>
 
       <!------------ cATEGORIA -------------->
-
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuCategoria">
           <mat-icon> attach_file</mat-icon>Categoria
@@ -95,16 +94,11 @@
           <button mat-menu-item routerLink="components/categories">
             Listar
           </button>
-          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/categories/reporte">
-            Reporte
-          </button>
         </mat-menu>
       </mat-list-item>
 
       
-
       <!------------- DISTRITO --------------->
-
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuDistrito">
           <mat-icon>room</mat-icon>Distrito
@@ -273,6 +267,10 @@
 
     </mat-nav-list>
   </mat-drawer>
-  <router-outlet></router-outlet>
+  <mat-drawer-content>
+    <div style="text-align: center; min-height: 640px">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
 
 </mat-drawer-container>
