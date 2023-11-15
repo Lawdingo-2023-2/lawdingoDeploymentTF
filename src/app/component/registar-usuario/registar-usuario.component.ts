@@ -93,9 +93,7 @@ export class RegistarUsuarioComponent implements OnInit {
       })
     })
     console.log(this.rol)
-    if(this.rol=="ADMIN"){
-      this.router.navigate(['login']);
-    }
+    
     if(this.rol=="ABOGADO"){
       this.router.navigate(['login',this.u.username]);
     }

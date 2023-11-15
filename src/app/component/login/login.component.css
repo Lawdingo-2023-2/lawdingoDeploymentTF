@@ -3,7 +3,7 @@ mat-form-field {
 }
 .logo {
     height: 80px;
-    margin-top: 8rem;
+    margin-top: 2rem;
     margin-bottom: 10px;
   }
 
@@ -64,8 +64,18 @@ header{
 .navbar .btnR:hover{
   color:black
 }
-.container h1{
+.card h1{
   color: #7C70C7;
   
+}
+.card{
+  width: 50%;
+  margin-left: 30%;
+  margin-top: 8rem;
+  width: 35%;
+  text-align: center;
+  background-color: #f0edf9;
+  /* position: fixed;
+  display: flex; */
 }
   

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { enviroment } from 'src/enviroments/enviroment';
 
 //se agrega los imports para actualizar la variables
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Category } from '../model/category';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { ConsultationByCategoryDTO } from '../model/ConsultationByCategoryDTO';
 
 //declaracion de una constante
 const base_url = enviroment.base;
@@ -77,6 +78,14 @@ export class CategoryService {
     let token = sessionStorage.getItem('token');
 
     return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+  getdocs(): Observable<ConsultationByCategoryDTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<ConsultationByCategoryDTO[]>(`${this.url}/cantidadconsultasporcategoria`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './component/login/login.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -56,7 +57,8 @@ import { LoginComponent } from './component/login/login.component';
     MatFormFieldModule,
     MatListModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule
 
   ],
   providers: [],

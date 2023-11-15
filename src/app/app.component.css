@@ -1,6 +1,12 @@
 .example-spacer {
     flex: 1 1 auto;
   }
+.drawer1{
+  background-color: white;
+  
+  height: 95%;
+
+}
 .nav{
     background-color: rgb(64, 164, 177);
   }
