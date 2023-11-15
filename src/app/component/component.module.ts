@@ -58,9 +58,9 @@ import { NotificationListarComponent } from './notification/notification-listar/
 import { NotificationCreaeditaComponent } from './notification/notification-creaedita/notification-creaedita.component';
 import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proceeding-summary.component';
 import { NgChartsModule } from 'ng2-charts';
-import { RegistarUsuarioComponent } from './registar-usuario/registar-usuario.component';
 import {MatCardModule} from '@angular/material/card';
-import { ReporteComponent } from './category/reporte/reporte.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -103,8 +103,6 @@ import { ReporteComponent } from './category/reporte/reporte.component';
     NotificationListarComponent,
     NotificationCreaeditaComponent,
     ProceedingSummaryComponent,
-    RegistarUsuarioComponent,
-    ReporteComponent
   ],
   imports: [
     CommonModule,
@@ -127,7 +125,12 @@ import { ReporteComponent } from './category/reporte/reporte.component';
     MatSidenavModule,
     MatSnackBarModule,
     NgChartsModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
+
+
+
+
     
   ]
 })

@@ -13,82 +13,79 @@
         <button
           mat-raised-button
           color="primary"
-          routerLink="/components/proceedings/nuevo" style="background-color: #7C70C7;"
+          routerLink="/components/proceedings/nuevo"
+          style="background-color: #7c70c7"
         >
           Nuevo
         </button>
       </div>
-      <mat-form-field>
-        <input matInput (keyup)="filter($event)" placeholder="buscar" />
-      </mat-form-field>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- Expediente/ID Column -->
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>Codigo</th>
-          <td mat-cell *matCellDef="let element">{{ element.idProceeding }}</td>
-        </ng-container>
+      <br />
+      <!--<mat-form-field>   <input matInput (keyup)="filter($event)" placeholder="buscar" />      </mat-form-field> -->
 
-        <!-- Expediente/nombre Column -->
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef>Expediente</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
+      <div class="listadoExpedientes">
+        <div *ngFor="let pro of listaExpedientes">
+          <mat-card class="expediente">
+            <div class="expContHeader">
+              <mat-card-header class="expHeader">
+                <mat-card-title style="text-align: left">
+                  {{ pro.name }}
+                </mat-card-title>
+                <mat-card-subtitle class="subcolumn">
+                  <p class="subSubtitle">Codigo: {{ pro.idProceeding }}</p>
 
-        <!-- Expediente/estado Column -->
-        <ng-container matColumnDef="estado">
-          <th mat-header-cell *matHeaderCellDef>Estado</th>
-          <td mat-cell *matCellDef="let element">{{ element.state }}</td>
-        </ng-container>
+                  <mat-card-actions
+                    class="subActions"
+                    [hidden]="role == 'CLIENTE'"
+                  >
+                    <button mat-button>
+                      <mat-icon
+                        style="color: rgb(30, 116, 255)"
+                        [routerLink]="['ediciones', pro.idProceeding]"
+                        >autorenew</mat-icon
+                      >
+                    </button>
+                    <button mat-button>
+                      <mat-icon
+                        style="color: #ff1e57"
+                        (click)="eliminar(pro.idProceeding)"
+                        >delete_outline</mat-icon
+                      >
+                    </button>
+                  </mat-card-actions>
+                </mat-card-subtitle>
+              </mat-card-header>
+            </div>
+            <div class="expContContent">
+              <mat-card-content class="expContent">
+                <p>Estado: {{ pro.state }}</p>
+                <p>Juzgado: {{ pro.court.name }}</p>
+                <p>
+                  El abogado {{ pro.lawyer.name }} atiende a
+                  {{ pro.client.name }}
+                </p>
+              </mat-card-content>
+            </div>
+          </mat-card>
+        </div>
+      </div>
 
-        <!-- Expediente/corte Column -->
-        <ng-container matColumnDef="juzgado">
-          <th mat-header-cell *matHeaderCellDef>Corte</th>
-          <td mat-cell *matCellDef="let element">{{ element.court.name }}</td>
-        </ng-container>
-
-        <!-- Expediente/cliente Column -->
-        <ng-container matColumnDef="cliente">
-          <th mat-header-cell *matHeaderCellDef>Cliente</th>
-          <td mat-cell *matCellDef="let element">{{ element.client.name }}</td>
-        </ng-container>
-
-        <!-- Expediente/abogado Column -->
-        <ng-container matColumnDef="abogado">
-          <th mat-header-cell *matHeaderCellDef>Abogado</th>
-          <td mat-cell *matCellDef="let element">{{ element.lawyer.name }}</td>
-        </ng-container>
-        <ng-container matColumnDef="accion01">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              color="warn"
-              [routerLink]="['ediciones', element.idProceeding]"
-            >
-              Actualizar
-            </button>
-          </td></ng-container
-        >
-        <ng-container matColumnDef="accion02">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              color="accent"
-              (click)="eliminar(element.idProceeding)"
-            >
-              Eliminar
-            </button>
-          </td></ng-container
-        >
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        showFirstLastButtons
-      ></mat-paginator>
+      <!--   <ng-container matColumnDef="accion01">
+        <th [hidden]="role == 'CLIENTE'" mat-header-cell *matHeaderCellDef>
+          Acciones
+        </th>
+        <td [hidden]="role == 'CLIENTE'" mat-cell *matCellDef="let element">
+          <mat-icon
+            style="color: rgb(30, 116, 255)"
+            [routerLink]="['ediciones', element.idProceeding]"
+            >autorenew</mat-icon
+          >
+          <mat-icon
+            style="color: #ff1e57"
+            (click)="eliminar(element.idProceeding)"
+            >delete_outline</mat-icon
+          >
+        </td></ng-container
+      > -->
     </div>
   </body>
 </html>

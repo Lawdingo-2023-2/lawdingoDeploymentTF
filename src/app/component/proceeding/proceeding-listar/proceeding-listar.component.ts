@@ -3,37 +3,34 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Proceeding } from 'src/app/model/proceeding';
 import { ProceedingService } from 'src/app/service/proceeding.service';
-
+import { LoginService } from 'src/app/service/login.service';
 @Component({
   selector: 'app-proceeding-listar',
   templateUrl: './proceeding-listar.component.html',
   styleUrls: ['./proceeding-listar.component.css'],
 })
 export class ProceedingListarComponent implements OnInit {
-  dataSource: MatTableDataSource<Proceeding> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'nombre',
-    'estado',
-    'juzgado',
-    'cliente',
-    'abogado',
-    'accion01',
-    'accion02',
-  ];
+  role: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private cS: ProceedingService) {}
+  listaExpedientes: Proceeding[] = [];
+
+  constructor(private cS: ProceedingService, private ls: LoginService) {}
 
   ngOnInit(): void {
+    this.role = this.ls.showRole();
     this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.listaExpedientes = data;
+
+      //this.dataSource = new MatTableDataSource(data);
+      //this.dataSource.paginator = this.paginator;
     });
     this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.listaExpedientes = data;
+
+      //this.dataSource = new MatTableDataSource(data);
+      //this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -45,7 +42,5 @@ export class ProceedingListarComponent implements OnInit {
     });
   }
 
-  filter(en: any) {
-    this.dataSource.filter = en.target.value.trim();
-  }
+  //filter(en: any) {    this.dataSource.filter = en.target.value.trim();  }
 }

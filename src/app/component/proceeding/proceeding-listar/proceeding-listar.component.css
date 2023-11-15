@@ -1,0 +1,54 @@
+.listadoExpedientes{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 15px;
+}
+.expediente{
+    border: 1px solid black;
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+
+}
+.expHeader {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+.subcolumn{
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.subSubtitle{
+    grid-area: subSub;
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+.subActions{
+    grid-area: subAct;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid black;
+}
+.expContent{
+    border: 1px solid black;
+    align-self: baseline;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    /* For tablets: */
+    .listadoExpedientes{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+}
