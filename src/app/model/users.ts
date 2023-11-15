@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export class Users {
   //ATRIBUTOS
   idUser: number = 0;
@@ -10,4 +12,5 @@ export class Users {
   lawyer: boolean = true;
   username: string = '';
   enabled: boolean = true;
+  rol:string =""
 }

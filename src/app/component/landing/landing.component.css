@@ -402,62 +402,7 @@ section{
 }
 /*-------CONTACTO----------*/
 
-.contacto .containerc{
-    display: flex;
-    flex-wrap: wrap-reverse;
-    gap: 4rem;
-    align-items: center;
-    padding-bottom: 4rem;
-}
-.contacto .containerc form{
-    flex: 1 1 40rem;
-    padding: 2rem 2.5rem;
-    box-shadow: 0 5px 14px rgba(0, 0, 0, .1), 0 5px 5px rgba(0, 0, 0, 0.22);
-    border: .1rem solid rgba(0, 0, 0, .1);
-    background: white;
-    border-radius: .5rem;
-}
-.containerc .mapa{
-    flex: 1 1 40rem;
-}
-.containerc .mapa iframe{
-    width: 100%;
-}
-.containerc form .cuadro{
-    padding:1rem ;
-    font-size:  1.7rem;
-    color: #333;
-    text-transform: none;
-    border:  .1rem solid rgba(0, 0, 0, .1);
-    border-radius:  .5rem;
-    margin: .7rem 0;
-    width: 100%;
-}
-.containerc form .cuadro:focus{
-    border-color: rgb(24, 142, 158);
-}
 
-.containerc form textarea{
-    height: 15rem;
-    resize: none;
-}
-.btnc{
-    display: inline-block;
-    margin-top: 1rem;
-    border-radius: .10rem;
-    background-color: rgb(24, 142, 158);
-    color: #fff;
-    padding: .8rem 3rem;
-    cursor: pointer;
-    font-size: 1.7rem;
-    padding-bottom: 1rem;
-
-}
-.btnc:hover{
-    border: 2px solid black ;
-    background-color: transparent;
-    color: black;
-}
 
 /*-----FOOTER------*/
 .distribucionf{
@@ -584,84 +529,7 @@ section{
 }
 
 /*----------SOBRE NOSoTROS----------*/
-.home-nosotros{
-    display: flex;
-    align-items: center;
-    min-height: 50vh;
-    /* background: url(../images/nosotros.jpeg) no-repeat ; */
-    background-size: cover;
-    background-position: center;
-    backdrop-filter: blur(4px);
 
-}
-.home-nosotros .contenido{
-    max-width: 80rem;
-    padding-top: 5rem;
-    
-}
-.home-nosotros .contenido h3{
-    font-size: 3rem;
-    color: black;
-}
-.home-nosotros .contenido .linea{
-    background-color: black;
-    width: 70%;
-    height: 2px;
-    border-radius: 2rem;
-    margin-bottom: 1.5rem;
-    
-}
-.home-nosotros .contenido p{
-    font-size: 1.5rem;
-    color: black(99, 96, 96);
-    padding: 1rem 0;
-    line-height: 1.5;
-    text-align: justify;
-    padding-left: 10rem;
-}
-.nosotros .team{
-    padding-bottom: 5rem; 
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    justify-items: center;
-}
-.nosotros h1{
-    text-align: center;
-    font-size: 3rem;
-    color: rgb(24, 142, 158);
-    padding: 2rem;
-    margin: 5rem 0;
-    margin-bottom: 3rem;
-}
-.nosotros .box{
-    width: 250px;
-    height: 370px;
-    padding: 0px 10px;
-    text-align: center;
-    border-radius: 3%;
-}
-.box img{
-    height: 270px;
-    margin-top: 10px;
-    /* border-radius: 5%; */
-    box-shadow: 0 5px 14px rgba(0, 0, 0, .1), 0 5px 5px rgba(0, 0, 0, 0.22);
-}
-.box .content-us{
-    padding: 2rem;
-}
-
-.content-us h3{
-    color: black;
-    font-size: 1.8rem;
-    font-weight: 500;
-}
-
-.content-us p{
-   font-size: 1.5rem;
-   color: rgb(24, 142, 158);
-   
-}
 /*video about the team*/
 .team-v{
     padding-bottom: 10rem;

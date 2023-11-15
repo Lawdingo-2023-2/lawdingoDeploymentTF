@@ -56,6 +56,7 @@ import { LandingComponent } from './landing/landing.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationListarComponent } from './notification/notification-listar/notification-listar.component';
 import { NotificationCreaeditaComponent } from './notification/notification-creaedita/notification-creaedita.component';
+import { RegistarUsuarioComponent } from './registar-usuario/registar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { NotificationCreaeditaComponent } from './notification/notification-crea
     NotificationComponent,
     NotificationListarComponent,
     NotificationCreaeditaComponent,
+    RegistarUsuarioComponent,
   ],
   imports: [
     CommonModule,

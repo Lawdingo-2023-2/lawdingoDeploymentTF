@@ -66,4 +66,9 @@ export class UsersService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+  //AGREGADO - PROBANDO REGISTRAR
+  listUsername(name: String) {
+    return this.http.get<Users>(`${this.url}/username/${name}`)
+  }
 }
