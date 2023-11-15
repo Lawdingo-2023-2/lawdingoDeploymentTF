@@ -19,10 +19,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './component/login/login.component';
+import { RegistarUsuarioComponent } from './component/registar-usuario/registar-usuario.component';
 
 
 
@@ -32,6 +34,7 @@ import { LoginComponent } from './component/login/login.component';
   declarations: [
     AppComponent,
     LoginComponent,
+    RegistarUsuarioComponent
     
   ],
 
@@ -57,6 +60,7 @@ import { LoginComponent } from './component/login/login.component';
     MatListModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatCardModule
 
   ],
   providers: [],

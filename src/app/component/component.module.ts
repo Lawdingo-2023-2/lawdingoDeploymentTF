@@ -60,6 +60,7 @@ import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proc
 import { NgChartsModule } from 'ng2-charts';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ReporteComponent } from './category/reporte/reporte.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     NotificationListarComponent,
     NotificationCreaeditaComponent,
     ProceedingSummaryComponent,
+    ReporteComponent
   ],
   imports: [
     CommonModule,
