@@ -1,4 +1,19 @@
+.listadoExpedientes{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 15px;
+}
 .expediente{
     border: 1px solid black;
-    width: 200px;
+    height: 275px;
+}
+
+@media only screen and (max-width: 1000px) {
+    /* For tablets: */
+    .listadoExpedientes{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
 }
