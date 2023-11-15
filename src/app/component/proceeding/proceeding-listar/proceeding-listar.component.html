@@ -29,10 +29,10 @@
               <mat-card-title style="text-align: left">
                 {{ pro.name }}
               </mat-card-title>
-              <mat-card-subtitle>
-                <p style="text-align: left">Codigo: {{ pro.idProceeding }}</p>
+              <mat-card-subtitle class="subcolumn">
+                <p class="subSubtitle">Codigo: {{ pro.idProceeding }}</p>
 
-                <mat-card-actions [hidden]="role == 'CLIENTE'">
+                <mat-card-actions class="subActions" [hidden]="role == 'CLIENTE'">
                   <button mat-button>
                     <mat-icon
                       style="color: rgb(30, 116, 255)"

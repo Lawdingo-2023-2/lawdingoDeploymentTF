@@ -8,6 +8,16 @@
     border: 1px solid black;
     height: 275px;
 }
+.subcolumn{
+    display: flex;
+    align-items: center;
+}
+.subSubtitle{
+    border: 1px solid black;
+}
+.subActions{
+    border: 1px solid black;
+}
 
 @media only screen and (max-width: 1000px) {
     /* For tablets: */
