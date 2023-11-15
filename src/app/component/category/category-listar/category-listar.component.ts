@@ -10,15 +10,15 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./category-listar.component.css'],
 })
 export class CategoryListarComponent implements OnInit {
-  role:string="";
+  role: string = '';
   dataSource: MatTableDataSource<Category> = new MatTableDataSource();
   displayedColumns: string[] = ['codigo', 'categoria', 'accion01'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private cS: CategoryService, private ls:LoginService) {}
+  constructor(private cS: CategoryService, private ls: LoginService) {}
   ngOnInit(): void {
-    this.role=this.ls.showRole();
+    this.role = this.ls.showRole();
     this.cS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
