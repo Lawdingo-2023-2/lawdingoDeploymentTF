@@ -56,7 +56,7 @@ import { LoginComponent } from './component/login/login.component';
     MatFormFieldModule,
     MatListModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
 
   ],
   providers: [],

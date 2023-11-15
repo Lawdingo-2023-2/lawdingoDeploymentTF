@@ -59,6 +59,8 @@ import { NotificationCreaeditaComponent } from './notification/notification-crea
 import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proceeding-summary.component';
 import { NgChartsModule } from 'ng2-charts';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
   declarations: [
@@ -123,7 +125,13 @@ import {MatCardModule} from '@angular/material/card';
     MatSidenavModule,
     MatSnackBarModule,
     NgChartsModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
+
+
+
+
+    
   ]
 })
 export class ComponentModule { }

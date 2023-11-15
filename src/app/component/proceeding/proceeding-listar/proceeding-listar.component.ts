@@ -11,34 +11,26 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class ProceedingListarComponent implements OnInit {
   role: string = '';
-  dataSource: MatTableDataSource<Proceeding> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'nombre',
-    'estado',
-    'juzgado',
-    'cliente',
-    'abogado',
-    'accion01',
-  ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-
-  cards = {}
-
+  listaExpedientes: Proceeding[] = [];
 
   constructor(private cS: ProceedingService, private ls: LoginService) {}
 
   ngOnInit(): void {
     this.role = this.ls.showRole();
     this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.listaExpedientes = data;
+
+      //this.dataSource = new MatTableDataSource(data);
+      //this.dataSource.paginator = this.paginator;
     });
     this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.listaExpedientes = data;
+
+      //this.dataSource = new MatTableDataSource(data);
+      //this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -50,7 +42,5 @@ export class ProceedingListarComponent implements OnInit {
     });
   }
 
-  filter(en: any) {
-    this.dataSource.filter = en.target.value.trim();
-  }
+  //filter(en: any) {    this.dataSource.filter = en.target.value.trim();  }
 }
