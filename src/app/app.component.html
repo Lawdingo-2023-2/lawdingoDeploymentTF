@@ -166,6 +166,9 @@
           <button mat-menu-item routerLink="components/proceedings">
             Listar
           </button>
+          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/proceedings/summary">
+            Resumen
+          </button>
           <!-- Agrega más elementos de menú si es necesario -->
         </mat-menu>
       </mat-list-item>

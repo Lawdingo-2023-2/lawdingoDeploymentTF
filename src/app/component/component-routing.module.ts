@@ -24,7 +24,8 @@ import { SubscriptionCreaeditaComponent } from './subscription/subscription-crea
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationCreaeditaComponent } from './notification/notification-creaedita/notification-creaedita.component';
-import { RegistarUsuarioComponent } from './registar-usuario/registar-usuario.component';
+import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proceeding-summary.component';
+
 const routes: Routes = [
   {
     path: 'users',
@@ -34,7 +35,6 @@ const routes: Routes = [
       { path: 'ediciones/:id', component: UsersCreaeditaComponent },
     ],
   },
-  { path: 'registrar-usuario', component: RegistarUsuarioComponent},
   {
     path: 'categories',
     component: CategoryComponent,
@@ -92,6 +92,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: ProceedingCreaeditaComponent },
       { path: 'ediciones/:id', component: ProceedingCreaeditaComponent },
+      { path: 'summary', component: ProceedingSummaryComponent },
     ],
   },
   {

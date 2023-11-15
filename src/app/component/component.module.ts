@@ -56,7 +56,8 @@ import { LandingComponent } from './landing/landing.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationListarComponent } from './notification/notification-listar/notification-listar.component';
 import { NotificationCreaeditaComponent } from './notification/notification-creaedita/notification-creaedita.component';
-import { RegistarUsuarioComponent } from './registar-usuario/registar-usuario.component';
+import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proceeding-summary.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,7 @@ import { RegistarUsuarioComponent } from './registar-usuario/registar-usuario.co
     NotificationComponent,
     NotificationListarComponent,
     NotificationCreaeditaComponent,
-    RegistarUsuarioComponent,
+    ProceedingSummaryComponent,
   ],
   imports: [
     CommonModule,
@@ -119,7 +120,8 @@ import { RegistarUsuarioComponent } from './registar-usuario/registar-usuario.co
     MatFormFieldModule,
     MatListModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgChartsModule
   ]
 })
 export class ComponentModule { }

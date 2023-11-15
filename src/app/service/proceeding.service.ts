@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { enviroment } from 'src/enviroments/enviroment';
 import { Proceeding } from '../model/proceeding';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { ProceedingSummaryDTO } from '../model/ProceedingSummaryDTO';
 
 const base_url = enviroment.base;
 
@@ -71,6 +72,14 @@ export class ProceedingService {
     let token = sessionStorage.getItem('token');
 
     return this.http.delete(`${this.url}/${id}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+  getdocs(): Observable<ProceedingSummaryDTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<ProceedingSummaryDTO[]>(`${this.url}/resumenexpediente`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
