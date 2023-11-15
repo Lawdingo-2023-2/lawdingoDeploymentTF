@@ -16,7 +16,7 @@
   </nav>
 </mat-toolbar>
 
-<mat-drawer-container>
+<mat-drawer-container class="drawer1">
   <mat-drawer class="nav" #drawer opened="true" mode="side" position="start">
     <mat-nav-list *ngIf="verificar()">
       <mat-list-item class="col1" [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
@@ -40,6 +40,8 @@
         </mat-menu>
       </mat-list-item>
 
+      <!--------------- ROL -------------->
+
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuRol">
           <mat-icon>perm_identity</mat-icon>Rol
@@ -55,6 +57,8 @@
           <button mat-menu-item routerLink="components/roles">Listar</button>
         </mat-menu>
       </mat-list-item>
+
+      <!------------- SUBSCRIPCION ----------->
 
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuSubscripcion">
@@ -74,6 +78,8 @@
         </mat-menu>
       </mat-list-item>
 
+      <!------------ cATEGORIA -------------->
+
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuCategoria">
           <mat-icon> attach_file</mat-icon>Categoria
@@ -89,8 +95,15 @@
           <button mat-menu-item routerLink="components/categories">
             Listar
           </button>
+          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/categories/reporte">
+            Reporte
+          </button>
         </mat-menu>
       </mat-list-item>
+
+      
+
+      <!------------- DISTRITO --------------->
 
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuDistrito">
@@ -166,9 +179,7 @@
           <button mat-menu-item routerLink="components/proceedings">
             Listar
           </button>
-          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/proceedings/summary">
-            Resumen
-          </button>
+          
           <!-- Agrega más elementos de menú si es necesario -->
         </mat-menu>
       </mat-list-item>
@@ -242,11 +253,26 @@
           <!-- Agrega más elementos de menú si es necesario -->
         </mat-menu>
       </mat-list-item>
+
+      <!--------------- REPORTE -------------------->
+      <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
+        <button class="col1" mat-button [matMenuTriggerFor]="menuReporte">
+          <mat-icon> insert_chart_outlined</mat-icon>Reportes
+        </button>
+        <mat-menu #menuReporte="matMenu">
+          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/proceedings/summary">
+            Reporte1
+          </button>
+          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/categories/reporte">
+            Reporte2
+          </button>
+          
+        </mat-menu>
+      </mat-list-item>
+
+
     </mat-nav-list>
   </mat-drawer>
-  <mat-drawer-content>
-    <div style="text-align: center; min-height: 640px">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-drawer-content>
+  <router-outlet></router-outlet>
+
 </mat-drawer-container>

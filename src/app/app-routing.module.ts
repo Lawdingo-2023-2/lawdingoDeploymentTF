@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './component/login/login.component';
 import { LandingComponent } from './component/landing/landing.component';
-
+import { RegistarUsuarioComponent } from './component/registar-usuario/registar-usuario.component';
 const routes: Routes = [
   {
     path: '',
@@ -13,6 +13,7 @@ const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
+  { path: 'registrar-usuario', component: RegistarUsuarioComponent},
   {
     path: 'components',
     loadChildren: () => import('./component/component.module').then((m) => m.ComponentModule),

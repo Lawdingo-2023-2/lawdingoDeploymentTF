@@ -1,0 +1,17 @@
+.logo {
+    height: 60px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #F5F9FF;
+    /* padding-bottom: 300px; */
+  }
+  .btn {
+    background-color:rgb(24, 109, 158) ;
+    color: white;
+  }
