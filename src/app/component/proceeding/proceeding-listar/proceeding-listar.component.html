@@ -25,53 +25,46 @@
       <div class="listadoExpedientes">
         <div *ngFor="let pro of listaExpedientes">
           <mat-card class="expediente">
-            <mat-card-header class="bw-cp-dashboard-title">
-              <mat-card-title style="text-align: left">
-                {{ pro.name }}
-              </mat-card-title>
-              <mat-card-subtitle class="subcolumn">
-                <p class="subSubtitle">Codigo: {{ pro.idProceeding }}</p>
+            <div class="expContHeader">
+              <mat-card-header class="expHeader">
+                <mat-card-title style="text-align: left">
+                  {{ pro.name }}
+                </mat-card-title>
+                <mat-card-subtitle class="subcolumn">
+                  <p class="subSubtitle">Codigo: {{ pro.idProceeding }}</p>
 
-                <mat-card-actions class="subActions" [hidden]="role == 'CLIENTE'">
-                  <button mat-button>
-                    <mat-icon
-                      style="color: rgb(30, 116, 255)"
-                      [routerLink]="['ediciones', pro.idProceeding]"
-                      >autorenew</mat-icon
-                    >
-                  </button>
-                  <button mat-button>
-                    <mat-icon
-                      style="color: #ff1e57"
-                      (click)="eliminar(pro.idProceeding)"
-                      >delete_outline</mat-icon
-                    >
-                  </button>
-                </mat-card-actions>
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>Estado: {{ pro.state }}</p>
-              <p>Juzgado: {{ pro.court.name }}</p>
-              <p>Cliente: {{ pro.client.name }}</p>
-              <p>Abogado: {{ pro.lawyer.name }}</p>
-            </mat-card-content>
-            <mat-card-actions [hidden]="role == 'CLIENTE'">
-              <button mat-button>
-                <mat-icon
-                  style="color: rgb(30, 116, 255)"
-                  [routerLink]="['ediciones', pro.idProceeding]"
-                  >autorenew</mat-icon
-                >
-              </button>
-              <button mat-button>
-                <mat-icon
-                  style="color: #ff1e57"
-                  (click)="eliminar(pro.idProceeding)"
-                  >delete_outline</mat-icon
-                >
-              </button>
-            </mat-card-actions>
+                  <mat-card-actions
+                    class="subActions"
+                    [hidden]="role == 'CLIENTE'"
+                  >
+                    <button mat-button>
+                      <mat-icon
+                        style="color: rgb(30, 116, 255)"
+                        [routerLink]="['ediciones', pro.idProceeding]"
+                        >autorenew</mat-icon
+                      >
+                    </button>
+                    <button mat-button>
+                      <mat-icon
+                        style="color: #ff1e57"
+                        (click)="eliminar(pro.idProceeding)"
+                        >delete_outline</mat-icon
+                      >
+                    </button>
+                  </mat-card-actions>
+                </mat-card-subtitle>
+              </mat-card-header>
+            </div>
+            <div class="expContContent">
+              <mat-card-content class="expContent">
+                <p>Estado: {{ pro.state }}</p>
+                <p>Juzgado: {{ pro.court.name }}</p>
+                <p>
+                  El abogado {{ pro.lawyer.name }} atiende a
+                  {{ pro.client.name }}
+                </p>
+              </mat-card-content>
+            </div>
           </mat-card>
         </div>
       </div>
