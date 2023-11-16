@@ -62,35 +62,38 @@
 
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">Eres abogado?</label>
+                  <label class="input-group-text" for="inputGroupSelect02">Eres abogado?</label>
                 </div>
-                <select class="form-control" id="inputGroupSelect02" name="lawyer" formControlName="lawyer" >
+                <select class="form-control" id="inputGroupSelect02" name="lawyer" formControlName="lawyer" (change)="ChangeValue($event)" >
+                    <span *ngIf="form.get('lawyer')?.hasError('required') && form.get('lawyer')?.touched" class="text-danger errorLabel">
+                        La <strong>Sleccione una opcion</strong> es requerida
+                    </span>
                   <option value="true">Si</option>
                   <option value="false">No</option>
                   
+                  
                 </select>
+                
               </div>
 
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Tipo de Perfil</label>
               </div>
-              <select class="form-control" id="inputGroupSelect01" name="tipo" formControlName="tipo" >
-                <option value="ABOGADO">Abogado</option>
-                <option value="CLIENTE">Cliente</option>
+              <select class="form-control" id="inputGroupSelect01" name="tipo" formControlName="tipo"  >
+                <!-- <!-- <option value="ABOGADO">Abogado</option> -->
+                <option value={{typeUser}} selected>{{typeUser}}</option> 
                 
               </select>
             </div>
-
-
 
             <div class="d-grid gap-2 mt-2">
               <button type="submit" class="btn btn-primary btn-lg" (submit)="registrar()">Guardar</button>
             </div>
 
-            <!-- <div class="d-grid gap-2 mt-2" *ngIf="cont>0">
+            <div class="d-grid gap-2 mt-2" *ngIf="cont>0">
               <button type="submit" class="btn btn-primary btn-lg" (click)="registrarrol()">Registrar</button>
-            </div> -->
+            </div>
 
             <p class="mt-3"><a routerLink="/login" style="color: #7C70C7;text-decoration: none;">Volver</a></p>
 

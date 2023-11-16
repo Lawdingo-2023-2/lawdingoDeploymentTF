@@ -10,7 +10,7 @@
     <br />
     <h2 style="text-align: center">Lista de Consultas</h2>
     <div style="text-align: right;">
-      <button mat-raised-button color="primary" routerLink="/components/consultations/nuevo" style="background-color: #7C70C7;">Nuevo</button>
+      <button mat-raised-button color="primary" [hidden]="role=='ABOGADO'" routerLink="/components/consultations/nuevo" style="background-color: #7C70C7;">Nuevo</button>
     </div>
     <mat-form-field>
       <input matInput (keyup)=filter($event) placeholder="buscar"/>
@@ -44,8 +44,8 @@
               </ng-container>
 
               <ng-container matColumnDef="cliente">
-                <th mat-header-cell *matHeaderCellDef>Cliente </th>
-                <td mat-cell *matCellDef="let element">
+                <th [hidden]="role=='CLIENTE'" mat-header-cell *matHeaderCellDef>Cliente </th>
+                <td [hidden]="role=='CLIENTE'" mat-cell *matCellDef="let element">
                   {{ element.client.name }}
                 </td>
               </ng-container>

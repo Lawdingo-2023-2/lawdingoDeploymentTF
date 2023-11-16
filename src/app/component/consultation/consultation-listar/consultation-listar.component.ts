@@ -13,6 +13,8 @@ export class ConsultationListarComponent implements OnInit{
   //AGREGACION DE ROL--------------------
   role:string="";
   ///////////////
+  arrConsultation: Consultation[] = [];
+  /////
   dataSource: MatTableDataSource<Consultation> = new MatTableDataSource();
   displayedColumns: string[] = [
     'codigo',
@@ -38,11 +40,13 @@ export class ConsultationListarComponent implements OnInit{
     this.role=this.ls.showRole();
     //////////////
     this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.view(data);
+      this.dataSource = new MatTableDataSource(this.arrConsultation);
       this.dataSource.paginator = this.paginator;
     });
     this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.view(data);
+      this.dataSource = new MatTableDataSource(this.arrConsultation);
       this.dataSource.paginator = this.paginator;
     });
   }
@@ -55,5 +59,25 @@ export class ConsultationListarComponent implements OnInit{
   }
   filter(en: any) {
     this.dataSource.filter = en.target.value.trim();
+  }
+  view(data:any){
+    if(this.role == 'ABOGADO'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].lawyer.username ==this.ls.showUsername()){
+          this.arrConsultation.push(data[i])
+        }
+      };
+    }
+    else if(this.role == 'CLIENTE'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].client.username ==this.ls.showUsername()){
+          this.arrConsultation.push(data[i])
+        }
+      };
+
+    }
+    else{
+      this.arrConsultation = data;
+    }
   }
 }
