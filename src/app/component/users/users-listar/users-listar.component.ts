@@ -24,7 +24,7 @@ export class UsersListarComponent implements OnInit {
     'enabled',
     'lawyer',
     'accion01',
-    'accion02',
+
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

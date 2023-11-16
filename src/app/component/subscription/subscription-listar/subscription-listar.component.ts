@@ -21,7 +21,6 @@ export class SubscriptionListarComponent implements OnInit {
     'fecha de inicio', 
     'usuario',
     'accion01',
-    'accion02',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
