@@ -62,7 +62,13 @@ export class RegistarUsuarioComponent implements OnInit {
     this.u.phone_num= this.form.value['telefono'];
     this.u.lawyer= this.form.value['lawyer'];
     
-    this.u.rol= this.form.value['tipo'];
+    // this.u.rol= this.form.value['tipo'];
+    if(this.form.value['lawyer']=="true"){
+      this.u.rol='ABOGADO'
+    }
+    else{
+      this.u.rol='CLIENTE'
+    }
     console.log(this.u.rol)
 
     if (this.form.value['dni'] && this.form.value['dni'].length > 0 &&
@@ -85,6 +91,7 @@ export class RegistarUsuarioComponent implements OnInit {
        this.uS.setList(data);
       });
     });
+    
   }
 
 
