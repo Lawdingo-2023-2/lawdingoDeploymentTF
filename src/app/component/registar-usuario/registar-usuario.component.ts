@@ -32,7 +32,7 @@ export class RegistarUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      id: new FormControl(),
+      idU: new FormControl(),
       dni: new FormControl(),
       usuario: new FormControl(),
       nombre: new FormControl(),
@@ -40,21 +40,24 @@ export class RegistarUsuarioComponent implements OnInit {
       contraseña: new FormControl(),
       telefono:new FormControl(),
       tipo: new FormControl(),
+      lawyer:new FormControl(),
+      birthDay:new FormControl(),
     });
     this.form2=new FormGroup({
       rol:new FormControl(),
-      usuario_id:new FormControl(),
+      user_id:new FormControl(),
     })
   }
 
   registrar(): void {
-    this.u.idUser= this.form.value['id'];
+    this.u.idUser= this.form.value['idU'];
     this.u.dni= this.form.value['dni'];
     this.u.username= this.form.value['usuario'];
     this.u.name= this.form.value['nombre'];
     this.u.email= this.form.value['correo'];
     this.u.password= this.form.value['contraseña'];
     this.u.phone_num= this.form.value['telefono'];
+    this.u.lawyer= this.form.value['lawyer'];
     this.u.rol= this.form.value['tipo'];
     if (this.form.value['dni'] && this.form.value['dni'].length > 0 &&
     this.form.value['usuario'] && this.form.value['usuario'].length > 0 &&
@@ -62,6 +65,7 @@ export class RegistarUsuarioComponent implements OnInit {
     this.form.value['correo'] && this.form.value['correo'].length > 0 &&
     this.form.value['contraseña'] && this.form.value['contraseña'].length > 0 &&
     this.form.value['telefono'] && this.form.value['telefono'].length > 0 &&
+    this.form.value['lawyer'] && this.form.value['lawyer'].length > 0 &&
     this.form.value['tipo'] && this.form.value['tipo'].length > 0 ) {
       this.registrarusuario();
       this.cont=1;
@@ -70,12 +74,14 @@ export class RegistarUsuarioComponent implements OnInit {
         }
   }
   registrarusuario():void{
-    this.uS.insert(this.u).subscribe(data => {
-      this.uS.list().subscribe(data => {
+    this.uS.insertR(this.u).subscribe(data => {
+      this.uS.listR().subscribe(data => {
        this.uS.setList(data);
       });
     });
   }
+
+
   registrarrol():void{
     this.username=this.u.username;
     this.uS.listUsername(this.u.username).subscribe(data => {
@@ -87,8 +93,8 @@ export class RegistarUsuarioComponent implements OnInit {
       console.log(this.id);
       if(this.id>0){
         console.log(this.id);
-        this.rS.insert(this.r).subscribe(data=> {
-        this.rS.list().subscribe(data=>{
+        this.rS.insertR(this.r).subscribe(data=> {
+        this.rS.listR().subscribe(data=>{
         this.rS.setList(data);
       })
     })
