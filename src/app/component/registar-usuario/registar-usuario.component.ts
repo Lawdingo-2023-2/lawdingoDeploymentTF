@@ -21,6 +21,9 @@ export class RegistarUsuarioComponent implements OnInit {
   cont:number=0;
   form2: FormGroup = new FormGroup({});
 
+  typeUser:string="";
+  ban:string="";
+
   constructor(
     private uS: UsersService,
     private rS: RoleService,
@@ -58,7 +61,10 @@ export class RegistarUsuarioComponent implements OnInit {
     this.u.password= this.form.value['contraseña'];
     this.u.phone_num= this.form.value['telefono'];
     this.u.lawyer= this.form.value['lawyer'];
+    
     this.u.rol= this.form.value['tipo'];
+    console.log(this.u.rol)
+
     if (this.form.value['dni'] && this.form.value['dni'].length > 0 &&
     this.form.value['usuario'] && this.form.value['usuario'].length > 0 &&
     this.form.value['nombre'] && this.form.value['nombre'].length > 0 &&
@@ -85,9 +91,11 @@ export class RegistarUsuarioComponent implements OnInit {
   registrarrol():void{
     this.username=this.u.username;
     this.uS.listUsername(this.u.username).subscribe(data => {
-      this.rol=data.rol;
+
+      this.rol=this.u.rol;
+
       this.id=data.idUser;
-      console.log(this.id);
+
       this.r.rol=this.rol;
       this.r.user.idUser=this.id;
       console.log(this.id);
@@ -101,12 +109,31 @@ export class RegistarUsuarioComponent implements OnInit {
     console.log(this.rol)
     
     if(this.rol=="ABOGADO"){
-      this.router.navigate(['login',this.u.username]);
+      this.router.navigate(['login']);
     }
     if(this.rol=="CLIENTE"){
-      this.router.navigate(['login',this.u.username]);
+      this.router.navigate(['login']);
     }
       }
     })
+  }
+
+  ChangeValue(e:any){
+    // this.form.value.lawyer=e.target.value;
+    
+    this.ban=e.target.value
+    
+    if(this.ban == 'true' ){
+      this.typeUser='ABOGADO'
+      
+    }
+    else if(this.ban == 'false' ){
+      this.typeUser='CLIENTE'
+      
+    }
+    console.log(this.typeUser)
+
+    this.form.value['tipo']=e.target.value==='true'?'ABOGADO':'CLIENTE';
+
   }
 }

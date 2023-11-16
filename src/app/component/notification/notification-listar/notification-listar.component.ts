@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NotificationService } from 'src/app/service/notification.service';
 import { Notification } from 'src/app/model/notification';
 import { FormBuilder } from '@angular/forms';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-notification-listar',
@@ -11,6 +12,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./notification-listar.component.css']
 })
 export class NotificationListarComponent implements OnInit{
+  role:string="";
   dataSource: MatTableDataSource<Notification> = new MatTableDataSource();
   displayedColumns: string[] = [
     'idNotification',
@@ -23,9 +25,12 @@ export class NotificationListarComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private nS: NotificationService, private formBuilder: FormBuilder) {
+  constructor(private nS: NotificationService, private formBuilder: FormBuilder, private ls:LoginService) {
   }
   ngOnInit(): void {
+
+    this.role=this.ls.showRole();
+
     this.nS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
