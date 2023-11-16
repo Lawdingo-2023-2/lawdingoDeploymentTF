@@ -23,16 +23,19 @@ export class SubscriptionCreaeditaComponent implements OnInit {
   mensaje: string = '';
   id: number = 0;
   edicion: boolean = false;
-
+  tipos: { value: string, viewValue: string }[] = [{ value: 'Free', viewValue: 'Free'},
+  { value: 'Premium', viewValue: 'Premium' },];
+ 
   listaUsuarios: Users[] = [];
   idUsuarioSeleccionado:number=0
+  opcionSeleccionada: string | undefined;
+
 
   constructor(
     private sS: SubscriptionService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-
     private uS: UsersService,
     
   ) {}
@@ -59,6 +62,20 @@ export class SubscriptionCreaeditaComponent implements OnInit {
     });
    
   }
+  calcularMonto(): string {
+    const tipoSuscripcion = this.form.get('name')?.value;
+  
+    // Lógica para calcular el monto según la opción seleccionada
+    if (tipoSuscripcion === 'Free') {
+      return 'S/0.00';
+    } else if (tipoSuscripcion === 'Premium') {
+      return 'S10.00';
+    } else {
+      return ''; // Manejar otros casos si es necesario
+    }
+  }
+  
+    
 
   aceptar(): void {
     if (this.form.valid) {

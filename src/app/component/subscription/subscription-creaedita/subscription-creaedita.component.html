@@ -16,24 +16,27 @@
         <br />
         <mat-form-field class="example-full-width">
           <mat-label>Tipo de Suscripcion</mat-label>
-          <input matInput placeholder="Tipo de Suscripcion" formControlName="name" />
-          <mat-error
-            *ngIf="obtenerControlCampo('name')?.errors?.['required']"
-          >
+          <mat-select placeholder="Tipo de Suscripcion" formControlName="name">
+            <mat-option *ngFor="let p of tipos" [value]="p.value">
+              {{p.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="obtenerControlCampo('name')?.errors?.['required']">
             El tipo de Suscripcion es obligatorio.
           </mat-error>
         </mat-form-field>
-
         <br />
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Monto</mat-label>
-          <input matInput placeholder="Monto" formControlName="amount"/>
-          <mat-error
-            *ngIf="obtenerControlCampo('amount')?.errors?.['required']"
-          >
-            El monto es obligatorio.
-          </mat-error>
-        </mat-form-field>
+          <mat-select placeholder="Monto" formControlName="amount">
+            <mat-option value="10">10</mat-option>
+            <mat-option value="0">0</mat-option>
+        </mat-select>
+        <mat-error *ngIf="obtenerControlCampo('amount')?.errors?.['required']">
+          El Monto es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br />
 
         <br />
         <mat-form-field appearance="fill" class="example-full-width">
