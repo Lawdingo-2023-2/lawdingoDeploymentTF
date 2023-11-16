@@ -26,6 +26,7 @@ export class UsersService {
         .set('Content-Type', 'application/json'),
     });
   }
+
   insert(p: Users) {
 
     let token = sessionStorage.getItem('token');
@@ -36,6 +37,17 @@ export class UsersService {
         .set('Content-Type', 'application/json'),
     });
   }
+  //////ROL
+  insertR(h: Users) {
+
+    return this.http.post(`${this.url}/save`,h);
+  }
+  listR() {
+
+    return this.http.get<Users[]>(this.url);
+  }
+
+
   setList(listaNueva: Users[]) {
     this.listaCambio.next(listaNueva);
   }

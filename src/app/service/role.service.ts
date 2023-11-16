@@ -29,6 +29,12 @@ export class RoleService {
         .set('Content-Type', 'application/json'),
     }); //METODO GET (HTTTP)
   }
+
+  listR() {
+
+    return this.http.get<Role[]>(this.url); //METODO GET (HTTTP)
+  }
+
   //insertar
   insert(r: Role) {
     //alienado al backend
@@ -39,6 +45,11 @@ export class RoleService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     }); //METODO PSOT(HTTP)
+  }
+  insertR(ro: Role) {
+    //alienado al backend
+  
+    return this.http.post(this.url, ro); //METODO PSOT(HTTP)
   }
 
   //llenar variable lista cambio

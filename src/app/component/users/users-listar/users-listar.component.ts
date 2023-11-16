@@ -21,7 +21,6 @@ export class UsersListarComponent implements OnInit {
     'email',
     'phone_num',
     'dni',
-    'birthDay',
     'enabled',
     'lawyer',
     'accion01',

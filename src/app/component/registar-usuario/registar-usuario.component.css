@@ -15,3 +15,14 @@
     background-color:rgb(24, 109, 158) ;
     color: white;
   }
+  .bodyR {
+    width: 50%;
+   
+
+  }
+  .row .col-md-6 input{
+    margin-bottom: 2%;
+  }
+  /* .input-group {
+    width:100%;
+  } */
