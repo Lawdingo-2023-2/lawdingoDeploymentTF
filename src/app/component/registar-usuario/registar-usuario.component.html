@@ -62,30 +62,30 @@
 
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect02">Eres abogado?</label>
+                  <label class="input-group-text" for="inputGroupSelect02">Tipo de perfil</label>
                 </div>
                 <select class="form-control" id="inputGroupSelect02" name="lawyer" formControlName="lawyer" (change)="ChangeValue($event)" >
-                    <span *ngIf="form.get('lawyer')?.hasError('required') && form.get('lawyer')?.touched" class="text-danger errorLabel">
-                        La <strong>Sleccione una opcion</strong> es requerida
-                    </span>
-                  <option value="true">Si</option>
-                  <option value="false">No</option>
+                    
+                  <!-- <option value="true">Si</option>
+                  <option value="false">No</option> -->
+                  <option value="true">ABOGADO</option>
+                  <option value="false">CLIENTE</option>
                   
                   
                 </select>
                 
               </div>
 
-            <div class="input-group mb-3">
+            <!-- <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Tipo de Perfil</label>
               </div>
-              <select class="form-control" id="inputGroupSelect01" name="tipo" formControlName="tipo"  >
+              <select class="form-control" id="inputGroupSelect01" name="tipo" formControlName="tipo"  > -->
                 <!-- <!-- <option value="ABOGADO">Abogado</option> -->
-                <option value={{typeUser}} selected>{{typeUser}}</option> 
+                <!-- <option value={{typeUser}} selected>{{typeUser}}</option> 
                 
               </select>
-            </div>
+            </div> -->
 
             <div class="d-grid gap-2 mt-2">
               <button type="submit" class="btn btn-primary btn-lg" (submit)="registrar()">Guardar</button>
