@@ -27,11 +27,11 @@
           <mat-card class="expediente">
             <div class="expContHeader">
               <mat-card-header class="expHeader">
-                <mat-card-title style="text-align: left">
+                <mat-card-title class="expHeaderTitle">
                   {{ pro.name }}
                 </mat-card-title>
                 <mat-card-subtitle class="subcolumn">
-                  <p class="subSubtitle">Codigo: {{ pro.idProceeding }}</p>
+                  <p class="subSubtitle">ID: {{ pro.idProceeding }}</p>
 
                   <!-- <ng-container matColumnDef="accion02">
                     <th mat-header-cell *matHeaderCellDef>Eliminar</th>
@@ -39,34 +39,38 @@
                       <mat-icon style="color: #ff1e57" (click)="eliminar(element.idCategory)">delete_outline</mat-icon>
                     </td></ng-container> -->
 
-                  <div class="acciones">
-                    <ng-container matColumnDef="accion01">
-                      <th mat-header-cell *matHeaderCellDef></th>
-                      <td mat-cell>
-                        <mat-icon
-                          style="color: rgb(30, 116, 255)"
-                          [routerLink]="['ediciones', pro.idProceeding]"
-                          >autorenew</mat-icon
-                        >
-                      </td></ng-container
-                    >
-                    <ng-container matColumnDef="accion02">
-                      <th mat-header-cell *matHeaderCellDef></th>
-                      <td mat-cell>
-                        <mat-icon
-                          style="color: #ff1e57"
-                          (click)="eliminar(pro.idProceeding)"
-                          >delete_outline</mat-icon
-                        >
-                      </td></ng-container
-                    >
+                  <div class="subActions">
+                    <div class="subEditar">
+                      <ng-container matColumnDef="accion01">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell>
+                          <mat-icon
+                            style="color: rgb(30, 116, 255)"
+                            [routerLink]="['ediciones', pro.idProceeding]"
+                            >autorenew</mat-icon
+                          >
+                        </td></ng-container
+                      >
+                    </div>
+                    <div class="subEliminar">
+                      <ng-container matColumnDef="accion02">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell>
+                          <mat-icon
+                            style="color: #ff1e57"
+                            (click)="eliminar(pro.idProceeding)"
+                            >delete_outline</mat-icon
+                          >
+                        </td></ng-container
+                      >
+                    </div>
                   </div>
                 </mat-card-subtitle>
               </mat-card-header>
             </div>
-            <div class="expContContent">
-              <mat-card-content class="expContent">
-                <p>Estado: {{ pro.state }}</p>
+            <div class="expCont">
+              <mat-card-content class="expContContent">
+                <p>Estado: {{ proValue(pro.state) }}</p>
                 <p>Juzgado: {{ pro.court.name }}</p>
                 <p>
                   El/La abogado(a) {{ pro.lawyer.name }} atiende a

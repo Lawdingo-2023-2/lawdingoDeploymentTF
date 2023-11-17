@@ -16,6 +16,18 @@ export class ProceedingListarComponent implements OnInit {
 
   listaExpedientes: Proceeding[] = [];
 
+  proValue(symbol: string): string {
+    switch (symbol) {
+      case 'O': {
+        return 'Occupied';
+      }
+      case 'C': {
+        return 'Closed';
+      }
+    }
+    return 'Pending';
+  }
+
   constructor(private cS: ProceedingService, private ls: LoginService) {}
 
   ngOnInit(): void {
