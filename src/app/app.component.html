@@ -19,11 +19,9 @@
 <mat-drawer-container >
   <mat-drawer class="nav" #drawer opened="true" mode="side" position="start">
     <mat-nav-list *ngIf="verificar()" >
-      <mat-list-item class="col1" [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
-        <button
-          
-          class="col1"
-          mat-button
+      <mat-list-item>
+        <button class="col1" mat-button 
+
           [matMenuTriggerFor]="menuUsuario"
         >
           <mat-icon>dashboard</mat-icon>Usuario
@@ -36,7 +34,9 @@
           >
             Registrar
           </button>
-          <button mat-menu-item routerLink="components/users">Listar</button>
+          <button mat-menu-item routerLink="components/users" *ngIf="role == 'ABOGADO' || role=='ADMIN' || role == 'CLIENTE'">
+            Listar
+          </button>
         </mat-menu>
       </mat-list-item>
 
