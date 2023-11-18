@@ -16,7 +16,7 @@
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label> Nombre del Expediente</mat-label>
+          <mat-label> Nombre del Expediente (máx. 20 caracteres)</mat-label>
           <input matInput placeholder="expediente" formControlName="name" />
           <mat-error *ngIf="obtenerControlCampo('name')?.errors?.['required']">
             El nombre del expediente es obligatorio.

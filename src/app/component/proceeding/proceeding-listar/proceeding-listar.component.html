@@ -11,7 +11,8 @@
       <h2 style="text-align: center">Lista de Expedientes</h2>
       <div style="text-align: right">
         <button
-          mat-raised-button [hidden]=" role == 'CLIENTE'"
+          mat-raised-button
+          [hidden]="role == 'CLIENTE'"
           color="primary"
           routerLink="/components/proceedings/nuevo"
           style="background-color: #7c70c7"
@@ -20,7 +21,8 @@
         </button>
       </div>
       <br />
-
+      <p [hidden]="role == 'CLIENTE'">{{ mensaje }}</p>
+      <br [hidden]="role == 'CLIENTE'" />
       <div class="listadoExpedientes">
         <div *ngFor="let pro of listaExpedientes">
           <mat-card class="expediente">

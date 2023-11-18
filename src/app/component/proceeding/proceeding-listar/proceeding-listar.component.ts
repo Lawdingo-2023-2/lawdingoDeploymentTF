@@ -15,6 +15,7 @@ export class ProceedingListarComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   listaExpedientes: Proceeding[] = [];
+  mensaje: string = 'Si no se puede eliminar un expediente es porque ya está registrado en alguna documentación';
 
   proValue(symbol: string): string {
     switch (symbol) {
@@ -47,6 +48,7 @@ export class ProceedingListarComponent implements OnInit {
   }
 
   eliminar(id: number) {
+    this.mensaje = '';
     this.pS.delete(id).subscribe((data) => {
       this.pS.list().subscribe((data) => {
         this.pS.setList(data);

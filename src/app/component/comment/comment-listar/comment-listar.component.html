@@ -54,29 +54,12 @@
         </ng-container>
 
         <ng-container matColumnDef="accion01">
-          <th mat-header-cell *matHeaderCellDef></th>
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              color="warn"
-              [routerLink]="['ediciones', element.idComment]"
-            >
-              Actualizar
-            </button>
-          </td></ng-container
-        >
-        <ng-container matColumnDef="accion02">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              color="accent"
-              (click)="eliminar(element.idComment)"
-            >
-              Eliminar
-            </button>
-          </td></ng-container
-        >
+            <mat-icon style="color: rgb(30, 116, 255)"[routerLink]="['ediciones', element.idComment]" >autorenew</mat-icon>
+            <mat-icon style="color: #ff1e57" (click)="eliminar(element.idComment)">delete_outline</mat-icon>
+          </td></ng-container>
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

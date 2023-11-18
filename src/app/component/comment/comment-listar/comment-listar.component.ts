@@ -19,7 +19,6 @@ export class CommentListarComponent implements OnInit{
     'descripcion',
     'puntos',
     'accion01',
-    'accion02',
   ];
 
   role: string = '';
