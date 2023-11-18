@@ -45,11 +45,15 @@
         <br />
         <mat-form-field class="example-full-width">
           <mat-label> Descripcion </mat-label>
-          <input
+          <textarea  matInput formControlName="description" rows="4" placeholder="Ingrese la descripcion(min 200 caracteres)" maxlength="200"></textarea>
+
+          <!-- <input
             matInput
             placeholder="Ingrese la descripcion"
             formControlName="description"
-          />
+            
+          /> -->
+
           <mat-error
             *ngIf="obtenerControlCampo('description')?.errors?.['required']"
           >
