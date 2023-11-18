@@ -19,7 +19,7 @@
           <mat-label>Nombre del Certificado</mat-label>
           <input matInput placeholder="Título" formControlName="title" />
           <mat-error *ngIf="obtenerControlCampo('title')?.errors?.['required']">
-            El nombre del expediente es obligatorio.
+            El nombre del certificado es obligatorio.
           </mat-error>
         </mat-form-field>
         <br />
@@ -35,7 +35,7 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="obtenerControlCampo('client')?.errors?.['required']">
-            El nombre del cliente es obligatorio.
+            El nombre del abogado es obligatorio.
           </mat-error>
         </mat-form-field>
         <br />

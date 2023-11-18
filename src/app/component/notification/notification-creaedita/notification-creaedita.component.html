@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="container" style="text-align: center">
-      <h2>Registro de Consulta</h2>
+      <h2>Registro de Notificación</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>idNotification</mat-label>
@@ -37,7 +37,7 @@
               </mat-option>
             </mat-select>
             <mat-error *ngIf="obtenerControlCampo('receiver')?.errors?.['required']">
-              Su nombre es obligatorio.
+              El cliente es obligatorio.
             </mat-error>
           </mat-form-field>
 
@@ -53,7 +53,7 @@
               </mat-option>
             </mat-select>
             <mat-error *ngIf="obtenerControlCampo('sender')?.errors?.['required']">
-              La categoria es obligatorio.
+              Es obligatorio su nombre.
             </mat-error>
           </mat-form-field>
 
