@@ -5,6 +5,6 @@ export class Subscription {
 idSubscription: number = 0;
 name: string = '';
 amount: number = 0.0;
-sub_start_date: Date =new Date(Date.now()); ;
+sub_start_date: Date =new Date(Date.now()); 
 users: Users = new Users();
 }

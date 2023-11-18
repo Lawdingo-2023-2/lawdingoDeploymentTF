@@ -39,9 +39,12 @@
           >
             El email es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('email')?.errors?.['invalidGmail']">
+            Permite solo correos Gmail.
+          </mat-error>
         </mat-form-field>
 
-        <br />
+        <br /> 
         <mat-form-field class="example-full-width">
           <mat-label>Contraseña</mat-label>
           <input matInput placeholder="Contraseña" formControlName="password" />
@@ -61,7 +64,11 @@
           >
             El telefono es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('phone_num')?.errors?.['pattern']">
+            Debe tener solo 9 dígitos.
+          </mat-error>
         </mat-form-field>
+
         <br />
 
 
@@ -87,6 +94,9 @@
             *ngIf="obtenerControlCampo('dni')?.errors?.['required']"
           >
             El DNI es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('dni')?.errors?.['pattern']">
+            Debe tener solo 8 dígitos.
           </mat-error>
         </mat-form-field>
 

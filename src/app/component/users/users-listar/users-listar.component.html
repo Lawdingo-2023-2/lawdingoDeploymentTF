@@ -61,8 +61,8 @@
         </ng-container>
 
         <ng-container matColumnDef="enabled">
-          <th  [hidden]="role=='ABOGADO'||role=='CLIENTE'" mat-header-cell *matHeaderCellDef>Activo</th>
-          <td  [hidden]="role=='ABOGADO'||role=='CLIENTE'"mat-cell *matCellDef="let element">{{ element.enabled }}</td>
+          <th  [hidden]="role=='ABOGADO'||role=='ADMIN'||role=='CLIENTE'" mat-header-cell *matHeaderCellDef>Activo</th>
+          <td  [hidden]="role=='ABOGADO'||role=='ADMIN'||role=='CLIENTE'" mat-cell *matCellDef="let element">{{ element.enabled }}</td>
         </ng-container>
 
         <ng-container matColumnDef="lawyer">

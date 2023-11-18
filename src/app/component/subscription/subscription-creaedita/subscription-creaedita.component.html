@@ -44,6 +44,7 @@
               placeholder="Ingrese fecha de inicio"
               [matDatepicker]="pickerStart"
               formControlName="sub_start_date"
+              [max]="maxFecha"
             />
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle

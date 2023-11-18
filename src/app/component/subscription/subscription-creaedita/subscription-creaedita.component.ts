@@ -9,6 +9,7 @@ import {
   FormBuilder,
   AbstractControl,
 } from '@angular/forms';
+import * as moment from 'moment';
 import { Users } from 'src/app/model/users';
 import { UsersService } from 'src/app/service/users.service';
 
@@ -21,9 +22,13 @@ export class SubscriptionCreaeditaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   s: Subscription = new Subscription();
   mensaje: string = '';
+  maxFecha: Date = moment().add(-1, 'days').toDate();
+  sub_start_date = new FormControl(new Date());
   id: number = 0;
   edicion: boolean = false;
-  tipos: { value: string, viewValue: string }[] = [{ value: 'Free', viewValue: 'Free'},
+
+  tipos: { value: string, viewValue: string }[] = [
+  { value: 'Free', viewValue: 'Free'},
   { value: 'Premium', viewValue: 'Premium' },];
  
   listaUsuarios: Users[] = [];
@@ -62,20 +67,8 @@ export class SubscriptionCreaeditaComponent implements OnInit {
     });
    
   }
-  calcularMonto(): string {
-    const tipoSuscripcion = this.form.get('name')?.value;
-  
-    // Lógica para calcular el monto según la opción seleccionada
-    if (tipoSuscripcion === 'Free') {
-      return 'S/0.00';
-    } else if (tipoSuscripcion === 'Premium') {
-      return 'S10.00';
-    } else {
-      return ''; // Manejar otros casos si es necesario
-    }
-  }
-  
-    
+
+
 
   aceptar(): void {
     if (this.form.valid) {
