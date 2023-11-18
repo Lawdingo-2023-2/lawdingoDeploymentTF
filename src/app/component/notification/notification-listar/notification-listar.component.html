@@ -47,10 +47,10 @@
 
 
               <ng-container matColumnDef="accion01">
-                <th mat-header-cell *matHeaderCellDef [hidden]="role=='ABOGADO'||role=='CLIENTE'">Acciones</th>
-                <td mat-cell *matCellDef="let element" [hidden]="role=='ABOGADO'||role=='CLIENTE'">
-                  <mat-icon style="color: rgb(30, 116, 255)"[routerLink]="['ediciones', element.idConsultation]" >autorenew</mat-icon>
-                  <mat-icon style="color: #ff1e57" (click)="eliminar(element.idConsultation)">delete_outline</mat-icon>
+                <th mat-header-cell *matHeaderCellDef [hidden]="role=='ABOGADO'">Acciones</th>
+                <td mat-cell *matCellDef="let element" [hidden]="role=='ABOGADO'">
+                  <mat-icon style="color: rgb(30, 116, 255)"[routerLink]="['ediciones', element.idNotification]" >autorenew</mat-icon>
+                  <mat-icon style="color: #ff1e57" (click)="eliminar(element.idNotification)">delete_outline</mat-icon>
                 </td></ng-container>
 
               <!-- <ng-container matColumnDef="accion02">
