@@ -20,7 +20,7 @@
   <mat-drawer class="nav" #drawer opened="true" mode="side" position="start">
     <mat-nav-list *ngIf="verificar()" >
       <mat-list-item>
-        <button class="col1" mat-button 
+        <button class="col1" mat-button
 
           [matMenuTriggerFor]="menuUsuario"
         >
@@ -97,7 +97,7 @@
         </mat-menu>
       </mat-list-item>
 
-      
+
       <!------------- DISTRITO --------------->
       <mat-list-item [hidden]="role == 'ABOGADO' || role == 'CLIENTE'">
         <button class="col1" mat-button [matMenuTriggerFor]="menuDistrito">
@@ -173,7 +173,7 @@
           <button mat-menu-item routerLink="components/proceedings">
             Listar
           </button>
-          
+
           <!-- Agrega más elementos de menú si es necesario -->
         </mat-menu>
       </mat-list-item>
@@ -266,7 +266,10 @@
           <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/comments/reporte">
             Reporte 4
           </button>
-          
+          <button *ngIf="role == 'ADMIN'" mat-menu-item routerLink="components/districts/reporte">
+            Reporte5
+          </button>
+
         </mat-menu>
       </mat-list-item>
 

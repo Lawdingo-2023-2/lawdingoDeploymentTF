@@ -28,6 +28,7 @@ import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proc
 import { ReporteComponent } from './category/reporte/reporte.component';
 import { ReporteSubscriptionComponent } from './subscription/reporte-subscription/reporte-subscription.component';
 import { CommentReporteComponent } from './comment/comment-reporte/comment-reporte.component';
+import { ReporteDistrictComponent } from './district/reporte-district/reporte-district.component';
 const routes: Routes = [
   {
     path: 'users',
@@ -52,6 +53,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: DistrictCreaeditaComponent },
       { path: 'ediciones/:id', component: DistrictCreaeditaComponent },
+      { path: 'reporte', component: ReporteDistrictComponent}
     ],
   },
   {

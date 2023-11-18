@@ -35,58 +35,56 @@ export class CertificationCreaeditaComponent implements OnInit {
         this.edicion = data['id'] != null;
         this.init();
       });
-        this.form = this.formBuilder.group({
-          idCerification: ['', Validators.required],
-          title: ['', Validators.required],
-          client: ['', Validators.required]
-        });
-        this.uS.list().subscribe((data)=>{
-          this.listaClientes = data.filter(User=>User.lawyer==true);
-        });
-    }
+      this.form = this.formBuilder.group({
+        idCertification: [''],
+        title: ['', Validators.required],
+        client: ['', Validators.required],
+      });
 
-    aceptar(){
-      if(this.form.valid){
-        this.certification.idCertification = this.form.value.idCerification;
-        this.certification.title = this.form.value.title;
+      this.uS.list().subscribe((data) => {
+        this.listaClientes = data.filter(User=>User.lawyer);
+      });
+    }
+    aceptar(): void {
+      if (this.form.valid) {
+        this.certification.idCertification = this.form.value.idProceeding;
+        this.certification.title = this.form.value.name;
         this.certification.client.idUser = this.form.value.client;
 
         if (this.edicion) {
-        this.cS.insert(this.certification).subscribe(data=>{
-          this.cS.list().subscribe(data=>{
-            this.cS.setList(data);
-          })
-        });
-      } else{
-        this.cS.insert(this.certification).subscribe((data) => {
-          this.cS.list().subscribe((data) => {
-            this.cS.setList(data);
+          this.cS.update(this.certification).subscribe(() => {
+            this.cS.list().subscribe((data) => {
+              this.cS.setList(data);
+            });
+          });
+        } else {
+          this.cS.insert(this.certification).subscribe((data) => {
+            this.cS.list().subscribe((data) => {
+              this.cS.setList(data);
+            });
+          });
+        }
+        this.router.navigate(['/components/certification']);
+      } else {
+        this.mensaje = 'Por favor complete todos los campos obligatorios.';
+      }
+    }
+    obtenerControlCampo(nombreCampo: string): AbstractControl {
+      const control = this.form.get(nombreCampo);
+      if (!control) {
+        throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
+      }
+      return control;
+    }
+    init() {
+      if (this.edicion) {
+        this.cS.listId(this.id).subscribe((data) => {
+          this.form = new FormGroup({
+            idCertification: new FormControl(data.idCertification),
+            title: new FormControl(data.title),
+            client: new FormControl(data.client.idUser),
           });
         });
       }
-      this.router.navigate(['/components/certification']);
-    } else {
-      this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
-    }
-
-  obtenerControlCampo(nombreCampo: string): AbstractControl {
-    const control = this.form.get(nombreCampo);
-    if (!control) {
-      throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
-    }
-    return control;
-    }
-
-  init() {
-    if (this.edicion) {
-      this.cS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idCertification: new FormControl(data.idCertification),
-          title: new FormControl(data.title),
-          client: new FormControl(data.client.idUser),
-        });
-      });
-    }
-  }
 }

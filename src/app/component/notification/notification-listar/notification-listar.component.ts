@@ -13,6 +13,7 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class NotificationListarComponent implements OnInit{
   role:string="";
+  arrDoc: Notification[] = [];
   dataSource: MatTableDataSource<Notification> = new MatTableDataSource();
   displayedColumns: string[] = [
     'idNotification',
@@ -30,12 +31,13 @@ export class NotificationListarComponent implements OnInit{
   ngOnInit(): void {
 
     this.role=this.ls.showRole();
-
     this.nS.list().subscribe((data) => {
+      this.view(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
     this.nS.getList().subscribe((data) => {
+      this.view(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
@@ -49,6 +51,18 @@ export class NotificationListarComponent implements OnInit{
   }
   filter(en: any) {
     this.dataSource.filter = en.target.value.trim();
+  }
+  view(data:any){
+    if(this.role == 'ABOGADO'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].proceeding.lawyer.username==this.ls.showUsername()){
+          this.arrDoc.push(data[i])
+        }
+      };
+    }
+    else{
+      this.arrDoc = data;
+    }
   }
 }
 

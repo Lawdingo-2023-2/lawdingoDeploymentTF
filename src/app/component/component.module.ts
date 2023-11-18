@@ -63,6 +63,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { ReporteComponent } from './category/reporte/reporte.component';
 import {ReporteSubscriptionComponent  } from './subscription/reporte-subscription/reporte-subscription.component';
 import { CommentReporteComponent } from './comment/comment-reporte/comment-reporte.component';
+import { ReporteDistrictComponent } from './district/reporte-district/reporte-district.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { CommentReporteComponent } from './comment/comment-reporte/comment-repor
     ProceedingSummaryComponent,
     ReporteComponent,
     ReporteSubscriptionComponent,
-    CommentReporteComponent
+    CommentReporteComponent,
+    ReporteDistrictComponent
   ],
   imports: [
     CommonModule,

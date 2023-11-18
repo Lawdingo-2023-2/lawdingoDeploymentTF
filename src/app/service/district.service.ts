@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { enviroment } from 'src/enviroments/enviroment';
 
 //se agrega los imports para actualizar la variables
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { District } from '../model/district';
+import { ProceedingByDistrictDTO } from '../model/ProceedingByDistrictDTO';
 
 //declaracion de una constante
 const base_url = enviroment.base;
@@ -65,7 +66,7 @@ export class DistrictService {
         .set('Content-Type', 'application/json'),
     });
   }
-  update(d:District) { 
+  update(d:District) {
     //return this.http.put(this.url, d);
     let token = sessionStorage.getItem('token');
 
@@ -85,4 +86,13 @@ export class DistrictService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+  getdocs(): Observable<ProceedingByDistrictDTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<ProceedingByDistrictDTO[]>(`${this.url}/cantidadprocedimientospordistrito`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+}
 }

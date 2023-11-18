@@ -3,43 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Registro de Certificado</title>
   </head>
   <body>
     <div class="container" style="text-align: center">
-      <h2>Registro de Certificados</h2>
+      <br />
+      <h2>Registro de Certificado</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
-          <mat-label>idCertification</mat-label>
-          <input matInput placeholder="ID" formControlName="idCertification"/>
+          <mat-label>ID del certificado</mat-label>
+          <input matInput placeholder="Código" formControlName="idCertification" />
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>Titulo</mat-label>
-          <input matInput placeholder="title" formControlName="title" />
-          <mat-error
-            *ngIf="obtenerControlCampo('title')?.errors?.['required']"
-          >
-            El nombre es obligatorio.
+          <mat-label>Nombre del Certificado</mat-label>
+          <input matInput placeholder="Título" formControlName="title" />
+          <mat-error *ngIf="obtenerControlCampo('title')?.errors?.['required']">
+            El nombre del expediente es obligatorio.
           </mat-error>
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-            <mat-label>Abogado</mat-label>
-            <mat-select
+          <mat-label>Abogado</mat-label>
+          <mat-select
             [(value)]="idUsuarioSeleccionado"
-            formControlName="client">
-              <mat-option *ngFor="let d of listaClientes" [value]="d.idUser">
-                {{d.name}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="obtenerControlCampo('client')?.errors?.['required']">
-              El abogado es obligatorio.
-            </mat-error>
-          </mat-form-field>
+            placeholder="Nombre"
+            formControlName="client"
+          >
+            <mat-option *ngFor="let p of listaClientes" [value]="p.idUser">
+              {{ p.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="obtenerControlCampo('client')?.errors?.['required']">
+            El nombre del cliente es obligatorio.
+          </mat-error>
+        </mat-form-field>
         <br />
-        <button mat-raised-button style="background-color: #7C70C7;color: white;">Aceptar</button>
-        <button mat-raised-button style="background-color: #70a7c7;color: white;" routerLink="/components/certification">
+        <button mat-raised-button style="background-color: #7C70C7; color: white;">Aceptar</button>
+        <button mat-raised-button style="background-color: #70a7c7; color: white;" routerLink="/components/certification">
           Cancelar
         </button>
         <p>{{ mensaje }}</p>
@@ -47,3 +48,4 @@
     </div>
   </body>
 </html>
+
