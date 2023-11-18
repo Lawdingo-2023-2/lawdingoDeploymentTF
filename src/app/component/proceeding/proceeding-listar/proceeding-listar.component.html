@@ -40,7 +40,7 @@
                       <mat-icon style="color: #ff1e57" (click)="eliminar(element.idCategory)">delete_outline</mat-icon>
                     </td></ng-container> -->
 
-                  <div class="subActions">
+                  <div class="subActions" [hidden]=" role == 'CLIENTE'">
                     <div class="subEditar">
                       <ng-container matColumnDef="accion01">
                         <th mat-header-cell *matHeaderCellDef></th>
