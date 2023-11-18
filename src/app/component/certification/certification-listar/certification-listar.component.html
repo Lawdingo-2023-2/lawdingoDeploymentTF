@@ -32,8 +32,6 @@
                 </mat-card-title>
                 <mat-card-subtitle class="subcolumn">
                   <p class="subSubtitle">ID: {{ pro.idCertification }}</p>
-                  <p class="subSubtitle">ID: {{ pro.client.name }}</p>
-
                   <!-- <ng-container matColumnDef="accion02">
                     <th mat-header-cell *matHeaderCellDef>Eliminar</th>
                     <td mat-cell *matCellDef="let element">
@@ -69,7 +67,11 @@
                 </mat-card-subtitle>
               </mat-card-header>
             </div>
-
+            <div class="expCont">
+              <mat-card-content class="expContContent">
+                <p>Abogado: {{ pro.client.name }}</p>
+              </mat-card-content>
+            </div>
           </mat-card>
         </div>
       </div>
