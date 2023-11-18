@@ -1,0 +1,70 @@
+.listadoCertificados{
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  gap: 15px;
+}
+.expHeader {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.expHeaderTitle{
+  text-align: left;
+  font-size: 20px;
+}
+.subcolumn{
+  display: flex;
+  justify-content: space-between;
+}
+.subSubtitle{
+  grid-area: subSub;
+  padding: 0px;
+  margin: 0px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  font-size: 14px;
+}
+.subActions{
+  grid-area: subAct;
+  height: 50px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.subActions > .subEditar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.subActions > .subEliminar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.expContContent{
+  align-self: baseline;
+}
+.expContContent > p{
+  font-size: 17px;
+}
+
+
+@media only screen and (max-width: 1100px) {
+  /* For tablets: */
+  .listadoCertificados{
+      grid-template-columns: repeat(2, 1fr);
+  }
+  .expHeaderTitle{
+      text-align: left;
+      font-size: 18px;
+  }
+  .subSubtitle{
+      font-size: 12px;
+  }
+  .expContContent > p{
+      font-size: 15px;
+  }
+}

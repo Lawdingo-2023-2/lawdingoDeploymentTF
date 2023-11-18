@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-  <div class="container">
-    <br />
-    <h2 style="text-align: center">Lista de Certificaciones</h2>
-    <div style="text-align: right;">
-      <button mat-raised-button color="primary" routerLink="/components/certification/nuevo" style="background-color: #7C70C7;">Nuevo</button>
-    </div>
-    <mat-form-field>
-      <input matInput (keyup)=filter($event) placeholder="buscar"/>
-    </mat-form-field>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!-- Codigo/ID Column -->
-            <ng-container matColumnDef="idCertification">
-              <th mat-header-cell *matHeaderCellDef> ID </th>
-              <td mat-cell *matCellDef="let element"> {{element.idCertification}} </td>
-            </ng-container>
-
-
-              <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef> Título </th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.title }}
-                </td>
-              </ng-container>
-
-              <ng-container matColumnDef="client">
-                <th mat-header-cell *matHeaderCellDef> Cliente </th>
-                <td mat-cell *matCellDef="let element">
-                  {{ element.client.name }}
-                </td>
-              </ng-container>
-
-
-              <ng-container matColumnDef="accion01">
-                <th mat-header-cell *matHeaderCellDef>Acciones</th>
-                <td mat-cell *matCellDef="let element">
-                  <mat-icon style="color: rgb(30, 116, 255)"[routerLink]="['ediciones', element.idCertification]" >autorenew</mat-icon>
-                  <mat-icon style="color: #ff1e57" (click)="eliminar(element.idCertification)">delete_outline</mat-icon>
-                </td></ng-container>
-
-              <!-- <ng-container matColumnDef="accion02">
-                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-                <td mat-cell *matCellDef="let element">
-                  <mat-icon style="color: #ff1e57" (click)="eliminar(element.idCategory)">delete_outline</mat-icon>
-
-                </td></ng-container> -->
-            >
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-
-          <mat-paginator
-            [pageSizeOptions]="[5, 10, 25, 100]"
-            showFirstLastButtons
-            aria-label="Select page">
-          </mat-paginator>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h2 style="text-align: center">Lista de Certificados</h2>
+      <div style="text-align: right">
+        <button
+          mat-raised-button
+          [hidden]="role == 'CLIENTE'"
+          color="primary"
+          routerLink="/components/certification/nuevo"
+          style="background-color: #7c70c7"
+        >
+          Nuevo
+        </button>
       </div>
-    </body>
+      <br />
+      <br [hidden]="role == 'CLIENTE'" />
+      <div class="listadoCertificados">
+        <div *ngFor="let pro of listaCertificacion">
+          <mat-card>
+            <div class="expContHeader">
+              <mat-card-header class="expHeader">
+                <mat-card-title class="expHeaderTitle">
+                  {{ pro.title }}
+                </mat-card-title>
+                <mat-card-subtitle class="subcolumn">
+                  <p class="subSubtitle">ID: {{ pro.idCertification }}</p>
+                  <p class="subSubtitle">ID: {{ pro.client.name }}</p>
+
+                  <!-- <ng-container matColumnDef="accion02">
+                    <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                    <td mat-cell *matCellDef="let element">
+                      <mat-icon style="color: #ff1e57" (click)="eliminar(element.idCategory)">delete_outline</mat-icon>
+                    </td></ng-container> -->
+
+                  <div class="subActions" [hidden]=" role == 'CLIENTE'">
+                    <div class="subEditar">
+                      <ng-container matColumnDef="accion01">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell>
+                          <mat-icon
+                            style="color: rgb(30, 116, 255)"
+                            [routerLink]="['ediciones', pro.idCertification]"
+                            >autorenew</mat-icon
+                          >
+                        </td></ng-container
+                      >
+                    </div>
+                    <div class="subEliminar">
+                      <ng-container matColumnDef="accion02">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell>
+                          <mat-icon
+                            style="color: #ff1e57"
+                            (click)="eliminar(pro.idCertification)"
+                            >delete_outline</mat-icon
+                          >
+                        </td></ng-container
+                      >
+                    </div>
+                  </div>
+                </mat-card-subtitle>
+              </mat-card-header>
+            </div>
+
+          </mat-card>
+        </div>
+      </div>
+      <br />
+    </div>
+  </body>
 </html>

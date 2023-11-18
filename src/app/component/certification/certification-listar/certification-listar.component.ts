@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Certification } from 'src/app/model/certification';
 import { CertificationService } from 'src/app/service/certification.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-certification-listar',
@@ -11,38 +12,29 @@ import { CertificationService } from 'src/app/service/certification.service';
   styleUrls: ['./certification-listar.component.css']
 })
 export class CertificationListarComponent implements OnInit{
-  dataSource: MatTableDataSource<Certification> = new MatTableDataSource();
-  mensaje: string = '';
-  idVacio: boolean = false;
-  displayedColumns: string[] =[
-    'idCertification',
-    'title',
-    'client',
-    'accion01'
-  ];
+  role: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private cS: CertificationService, private formBuilder: FormBuilder){}
+  listaCertificacion: Certification[] = [];
+
+  constructor(private pS: CertificationService, private ls: LoginService) {}
 
   ngOnInit(): void {
-    this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+    this.role = this.ls.showRole();
+    this.pS.list().subscribe((data) => {
+      this.listaCertificacion = data;
     });
-    this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+    this.pS.getList().subscribe((data) => {
+      this.listaCertificacion = data;
     });
   }
+
   eliminar(id: number) {
-    this.cS.delete(id).subscribe((data) => {
-      this.cS.list().subscribe((data) => {
-        this.cS.setList(data);
+    this.pS.delete(id).subscribe((data) => {
+      this.pS.list().subscribe((data) => {
+        this.pS.setList(data);
       });
     });
-  }
-  filter(en: any) {
-    this.dataSource.filter = en.target.value.trim();
   }
 }
