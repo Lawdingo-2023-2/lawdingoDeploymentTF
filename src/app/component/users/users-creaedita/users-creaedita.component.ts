@@ -61,10 +61,10 @@ export class UsersCreaeditaComponent implements OnInit {
     this.form = this.formBuilder.group({
       idUser: ['',],
       name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email,, this.gmailValidator]],
       password: ['', Validators.required],
-      phone_num: ['', Validators.required],
-      dni: ['', Validators.required],
+      phone_num: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
+      dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
       birthDay: ['', Validators.required],
       lawyer: ['', Validators.required],
       username: ['', Validators.required],
@@ -107,6 +107,14 @@ export class UsersCreaeditaComponent implements OnInit {
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
+  }
+
+  gmailValidator(control: AbstractControl): { [key: string]: any } | null {
+    const email = control.value as string;
+    if (email && !email.toLowerCase().endsWith('@gmail.com')) {
+      return { 'invalidGmail': true };
+    }
+    return null;
   }
 
   obtenerControlCampo(nombreCampo: string): AbstractControl {
