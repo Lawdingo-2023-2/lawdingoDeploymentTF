@@ -9,6 +9,7 @@ import {
   FormBuilder,
   AbstractControl,
 } from '@angular/forms';
+import * as moment from 'moment';
 import { Category } from 'src/app/model/category';
 import { Users } from 'src/app/model/users';
 import { UsersService } from 'src/app/service/users.service';
@@ -22,6 +23,7 @@ import { CategoryService } from 'src/app/service/category.service';
 export class ConsultationCreaeditaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   consulta: Consultation = new Consultation();
+  maxFecha: Date = moment().add(-1, 'days').toDate();
   mensaje: string = '';
   id: number = 0;
   edicion: boolean = false;

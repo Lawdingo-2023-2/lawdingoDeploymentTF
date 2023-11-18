@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         if (this.loginService.showRole() == 'ADMIN') {
           this.router.navigate(['components/users']);
         } else {
-          this.router.navigate(['components/consultations']);
+          this.router.navigate(['components/users']);
         }
       },
       (error) => {

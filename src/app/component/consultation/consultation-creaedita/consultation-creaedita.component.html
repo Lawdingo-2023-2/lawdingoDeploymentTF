@@ -29,6 +29,7 @@
             placeholder="Ingrese fecha de consulta"
             [matDatepicker]="pickerStart"
             formControlName="date"
+            [max]="maxFecha"
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
@@ -70,7 +71,7 @@
           <mat-error
             *ngIf="obtenerControlCampo('cliente')?.errors?.['required']"
           >
-            Su nombre es obligatorio.
+          Seleccione un cliente
           </mat-error>
         </mat-form-field>
 
@@ -88,7 +89,7 @@
           <mat-error
             *ngIf="obtenerControlCampo('abogado')?.errors?.['required']"
           >
-            El nombre del abogado es obligatorio.
+            Seleccione un abogado
           </mat-error>
         </mat-form-field>
 
