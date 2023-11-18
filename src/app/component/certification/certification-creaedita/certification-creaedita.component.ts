@@ -18,7 +18,6 @@ export class CertificationCreaeditaComponent implements OnInit {
   edicion: boolean = false;
   id: number = 0;
 
-  listaUsuarios: Users[] = [];
   listaClientes: Users[] = [];
   idUsuarioSeleccionado:number = 0
 
@@ -43,11 +42,7 @@ export class CertificationCreaeditaComponent implements OnInit {
       });
 
       this.uS.list().subscribe((data) => {
-        this.listaUsuarios = data;
-
-        this.listaClientes = this.listaUsuarios.filter((obj) => {
-          return obj.lawyer == true;
-        });
+        this.listaClientes = data.filter(User=>User.lawyer);
       });
     }
     aceptar(): void {
