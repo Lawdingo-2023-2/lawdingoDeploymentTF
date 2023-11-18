@@ -53,7 +53,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: DistrictCreaeditaComponent },
       { path: 'ediciones/:id', component: DistrictCreaeditaComponent },
-      { path: 'quantity', component: ReporteDistrictComponent}
+      { path: 'reporte', component: ReporteDistrictComponent}
     ],
   },
   {
