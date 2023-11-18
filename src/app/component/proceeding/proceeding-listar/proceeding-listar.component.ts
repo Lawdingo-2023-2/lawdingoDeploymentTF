@@ -20,7 +20,7 @@ export class ProceedingListarComponent implements OnInit {
   proValue(symbol: string): string {
     switch (symbol) {
       case 'O': {
-        return 'Occupied';
+        return 'Open';
       }
       case 'C': {
         return 'Closed';
