@@ -26,7 +26,7 @@ export class ProceedingCreaeditaComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   estados: { value: string; viewValue: string }[] = [
-    { value: 'O', viewValue: 'Open' },
+    { value: 'O', viewValue: 'Opened' },
     { value: 'C', viewValue: 'Closed' },
     { value: 'P', viewValue: 'Pending' },
   ];
