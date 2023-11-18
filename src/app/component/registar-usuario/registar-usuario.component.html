@@ -6,11 +6,14 @@
 
             <div class="col-md-6">
                 <!-- <label >DNI</label> -->
-                <input matInput required placeholder="DNI" formControlName="dni" class="form-control" type="dni" maxlength="8">
+                <input matInput required placeholder="DNI" formControlName="dni" class="form-control" type="text"  pattern="[0-9]{8}" >
                 
                 <span *ngIf="form.get('dni')?.hasError('required') && form.get('dni')?.touched" class="text-danger errorLabel">
                     El <strong>DNI</strong> es requerido
                 </span>
+                <span *ngIf="form.get('dni')?.errors?.['pattern']"class="text-danger errorLabel" >
+                    Debe tener 8 dígitos y solo numeros.
+                  </span>
 
                 
             </div>
@@ -53,11 +56,14 @@
             </div>
 
             <div class="col-md-6">
-                <input matInput required placeholder="Telefono" formControlName="telefono" class="form-control">
+                <input matInput required placeholder="Telefono" formControlName="telefono" class="form-control" pattern="[0-9]{9}" >
                 <!-- <label>Telefono</label> -->
                 <span *ngIf="form.get('telefono')?.hasError('required') && form.get('telefono')?.touched" class="text-danger errorLabel">
-                    La <strong>Telfono</strong> es requerida
+                    La <strong>Telefono</strong> es requerido
                 </span>
+                <span *ngIf="form.get('telefono')?.errors?.['pattern']"class="text-danger errorLabel" >
+                    Debe tener 9 dígitos y solo numeros.
+                  </span>
             </div>
 
             <div class="input-group mb-2">
