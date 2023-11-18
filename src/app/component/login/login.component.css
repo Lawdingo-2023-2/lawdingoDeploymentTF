@@ -80,4 +80,15 @@ header{
   box-shadow: 0 .4rem 2rem rgba(0,0,0,.1);
   
 }
-  
+
+@media screen and (max-width: 1200px){
+  .logo {
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .logo {
+    height: 40px;
+  }
+}
