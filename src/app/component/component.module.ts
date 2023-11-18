@@ -61,6 +61,7 @@ import { NgChartsModule } from 'ng2-charts';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ReporteComponent } from './category/reporte/reporte.component';
+import {ReporteSubscriptionComponent  } from './subscription/reporte-subscription/reporte-subscription.component';
 
 
 @NgModule({
@@ -104,7 +105,8 @@ import { ReporteComponent } from './category/reporte/reporte.component';
     NotificationListarComponent,
     NotificationCreaeditaComponent,
     ProceedingSummaryComponent,
-    ReporteComponent
+    ReporteComponent,
+    ReporteSubscriptionComponent
   ],
   imports: [
     CommonModule,

@@ -29,12 +29,11 @@ import { RegistarUsuarioComponent } from './component/registar-usuario/registar-
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistarUsuarioComponent
+    RegistarUsuarioComponent,
     
   ],
 

@@ -1,8 +1,9 @@
+import { UsersBySubscriptionDTO } from './../model/UsersBySubscription';
 import { Injectable } from '@angular/core';
 import { enviroment } from 'src/enviroments/enviroment';
 
 //se agrega los imports para actualizar la variables
-import{ Subject} from 'rxjs'
+import{ Observable, Subject} from 'rxjs'
 import { Subscription } from '../model/subscription';
 import{HttpClient, HttpHeaders } from '@angular/common/http'
 
@@ -82,4 +83,12 @@ export class SubscriptionService {
         .set('Content-Type', 'application/json'),
     });
   }
+  getdocs(): Observable<UsersBySubscriptionDTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<UsersBySubscriptionDTO[]>(`${this.url}/cantidausuarioporsuscripcion`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+}
 }

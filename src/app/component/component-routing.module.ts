@@ -26,7 +26,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { NotificationCreaeditaComponent } from './notification/notification-creaedita/notification-creaedita.component';
 import { ProceedingSummaryComponent } from './proceeding/proceeding-summary/proceeding-summary.component';
 import { ReporteComponent } from './category/reporte/reporte.component';
-
+import { ReporteSubscriptionComponent } from './subscription/reporte-subscription/reporte-subscription.component';
 const routes: Routes = [
   {
     path: 'users',
@@ -84,6 +84,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: SubscriptionCreaeditaComponent },
       { path: 'ediciones/:id', component: SubscriptionCreaeditaComponent },
+      { path: 'cantidad', component: ReporteSubscriptionComponent },
     ],
   },
 
