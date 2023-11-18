@@ -13,6 +13,8 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class CertificationListarComponent implements OnInit{
   role: string = '';
+  arrDoc: Certification[] = [];
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -23,9 +25,11 @@ export class CertificationListarComponent implements OnInit{
   ngOnInit(): void {
     this.role = this.ls.showRole();
     this.pS.list().subscribe((data) => {
+      this.view(data);
       this.listaCertificacion = data;
     });
     this.pS.getList().subscribe((data) => {
+      this.view(data);
       this.listaCertificacion = data;
     });
   }
@@ -36,5 +40,17 @@ export class CertificationListarComponent implements OnInit{
         this.pS.setList(data);
       });
     });
+  }
+  view(data:any){
+    if(this.role == 'ABOGADO'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].proceeding.lawyer.username==this.ls.showUsername()){
+          this.arrDoc.push(data[i])
+        }
+      };
+    }
+    else{
+      this.arrDoc = data;
+    }
   }
 }
