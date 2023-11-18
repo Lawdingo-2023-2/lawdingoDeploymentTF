@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { enviroment } from 'src/enviroments/enviroment';
 import { Comment } from '../model/comment';
+import { CommentByLawyerDTO } from '../model/CommentByLawyerDTO';
 
 const base_url = enviroment.base;
 
@@ -72,5 +73,14 @@ export class CommentService {
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
     });
+  }
+  getcomments(idlawyer: number): Observable<CommentByLawyerDTO[]>{
+    let token = sessionStorage.getItem('token');
+    
+    return this.http.get<CommentByLawyerDTO[]>(`${this.url}/listCommentByLawyer?idLaw=${idlawyer}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    })
   }
 }
