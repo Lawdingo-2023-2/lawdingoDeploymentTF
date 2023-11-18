@@ -28,17 +28,17 @@ export class ProceedingListarComponent implements OnInit {
     return 'Pending';
   }
 
-  constructor(private cS: ProceedingService, private ls: LoginService) {}
+  constructor(private pS: ProceedingService, private ls: LoginService) {}
 
   ngOnInit(): void {
     this.role = this.ls.showRole();
-    this.cS.list().subscribe((data) => {
+    this.pS.list().subscribe((data) => {
       this.listaExpedientes = data;
 
       //this.dataSource = new MatTableDataSource(data);
       //this.dataSource.paginator = this.paginator;
     });
-    this.cS.getList().subscribe((data) => {
+    this.pS.getList().subscribe((data) => {
       this.listaExpedientes = data;
 
       //this.dataSource = new MatTableDataSource(data);
@@ -47,12 +47,11 @@ export class ProceedingListarComponent implements OnInit {
   }
 
   eliminar(id: number) {
-    this.cS.delete(id).subscribe((data) => {
-      this.cS.list().subscribe((data) => {
-        this.cS.setList(data);
+    this.pS.delete(id).subscribe((data) => {
+      this.pS.list().subscribe((data) => {
+        this.pS.setList(data);
       });
     });
   }
 
-  //filter(en: any) {    this.dataSource.filter = en.target.value.trim();  }
 }

@@ -20,11 +20,10 @@ import { UsersService } from 'src/app/service/users.service';
 export class CommentReporteComponent implements OnInit {
   dataSource: MatTableDataSource<CommentByLawyerDTO> =
     new MatTableDataSource<CommentByLawyerDTO>();
-  mensaje: string = '';
+  mensaje: string = 'Si luego de presionar el boton Buscar no se muestran comentarios, el abogado no tiene comentarios registrados';
   form: FormGroup = new FormGroup({});
-  abogado: Users = new Users();
   idAbogadoSeleccionado: number = 0;
-  listaUsuarios: Users[] = [];
+  listaComentarios: CommentByLawyerDTO[] = [];
   listaAbogados: Users[] = [];
   displayedColumns: string[] = ['cliente', 'descripcion', 'puntos'];
 
@@ -42,25 +41,24 @@ export class CommentReporteComponent implements OnInit {
     });
 
     this.lawS.list().subscribe((data) => {
-      this.listaUsuarios = data;
-
-      this.listaAbogados = this.listaUsuarios.filter((obj) => {
+      this.listaAbogados = data.filter((obj) => {
         return obj.lawyer == true;
       });
     });
   }
 
   buscar() {
-    if(this.form.valid) {
-      this.abogado.idUser = this.form.value.lawyer;
-      console.log(this.abogado.idUser);
-      this.cS.getcomments(this.abogado.idUser).subscribe((data) => {
+    if (this.form.valid) {
+      this.mensaje = '';
+      this.idAbogadoSeleccionado = this.form.value.lawyer;
+      this.cS.getcomments(this.idAbogadoSeleccionado).subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
+        this.listaComentarios = data;
         this.dataSource.paginator = this.paginator;
-      })
+      });
     }
-  }
 
+  }
 
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);

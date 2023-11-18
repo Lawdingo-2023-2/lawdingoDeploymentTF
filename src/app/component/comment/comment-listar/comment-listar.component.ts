@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CommentService } from 'src/app/service/comment.service';
 import { Comment } from 'src/app/model/comment';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-comment-listar',
@@ -21,11 +22,15 @@ export class CommentListarComponent implements OnInit{
     'accion02',
   ];
 
+  role: string = '';
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private cS: CommentService) {}
+  constructor(private cS: CommentService, private ls: LoginService) {}
 
   ngOnInit(): void {
+    this.role = this.ls.showRole();
+
     this.cS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

@@ -11,29 +11,31 @@
       <div style="text-align: center">
         <h1>Comentarios recibidos por Abogado</h1>
       </div>
-      <div [formGroup]="form" class="container">
-        <mat-form-field class="example-full-width">
-          <mat-label>Abogado</mat-label>
+      <div [formGroup]="form" class="busqueda">
+        <mat-form-field class="busqCasilla">
+          <mat-label class="busqCasLabel">Abogado</mat-label>
           <mat-select
             [(value)]="idAbogadoSeleccionado"
             placeholder="abogado"
             formControlName="lawyer"
+            class="busqCasSelect"
           >
             <mat-option *ngFor="let p of listaAbogados" [value]="p.idUser">
               {{ p.name }}
             </mat-option>
           </mat-select>
           <mat-error
-            *ngIf="obtenerControlCampo('lawyer')?.errors?.['required']"
+            *ngIf="obtenerControlCampo('lawyer')?.errors?.['required']" class="busqCasError"
           >
             Debe seleccionar un abogado para hacer la búsqueda.
           </mat-error>
         </mat-form-field>
-        <button (click)="buscar()" mat-raised-button color="warn">
+        <button (click)="buscar()" mat-raised-button color="warn" class="busqBoton">
           Buscar
         </button>
       </div>
       <br />
+      <p style="margin-left: 10px; margin-right: 10px;">{{mensaje}}</p>
       <br />
       <div class="container">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

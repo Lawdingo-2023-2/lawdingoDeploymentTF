@@ -11,7 +11,7 @@
       <h2 style="text-align: center">Lista de Comentarios</h2>
       <div style="text-align: right">
         <button
-          mat-raised-button
+          mat-raised-button [hidden]=" role == 'ABOGADO'"
           color="primary"
           routerLink="/components/comments/nuevo"
           style="background-color: #7c70c7"

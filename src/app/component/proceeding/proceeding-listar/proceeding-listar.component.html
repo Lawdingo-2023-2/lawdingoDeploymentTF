@@ -11,7 +11,7 @@
       <h2 style="text-align: center">Lista de Expedientes</h2>
       <div style="text-align: right">
         <button
-          mat-raised-button
+          mat-raised-button [hidden]=" role == 'CLIENTE'"
           color="primary"
           routerLink="/components/proceedings/nuevo"
           style="background-color: #7c70c7"
@@ -20,7 +20,6 @@
         </button>
       </div>
       <br />
-      <!--<mat-form-field>   <input matInput (keyup)="filter($event)" placeholder="buscar" />      </mat-form-field> -->
 
       <div class="listadoExpedientes">
         <div *ngFor="let pro of listaExpedientes">
@@ -82,23 +81,6 @@
         </div>
       </div>
       <br />
-      <!--   <ng-container matColumnDef="accion01">
-        <th [hidden]="role == 'CLIENTE'" mat-header-cell *matHeaderCellDef>
-          Acciones
-        </th>
-        <td [hidden]="role == 'CLIENTE'" mat-cell *matCellDef="let element">
-          <mat-icon
-            style="color: rgb(30, 116, 255)"
-            [routerLink]="['ediciones', element.idProceeding]"
-            >autorenew</mat-icon
-          >
-          <mat-icon
-            style="color: #ff1e57"
-            (click)="eliminar(element.idProceeding)"
-            >delete_outline</mat-icon
-          >
-        </td></ng-container
-      > -->
     </div>
   </body>
 </html>

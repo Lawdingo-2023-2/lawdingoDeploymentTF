@@ -1,4 +1,8 @@
-mat-form-field{
-    border: 1px solid black;
-    width: 300px;
+.busqueda {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.busqBoton {
+    margin-top: 10.8px;
 }

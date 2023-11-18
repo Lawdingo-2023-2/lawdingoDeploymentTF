@@ -77,12 +77,15 @@ export class ProceedingService {
         .set('Content-Type', 'application/json'),
     });
   }
-  getdocs(): Observable<ProceedingSummaryDTO[]>{
+  getdocs(): Observable<ProceedingSummaryDTO[]> {
     let token = sessionStorage.getItem('token');
-    return this.http.get<ProceedingSummaryDTO[]>(`${this.url}/resumenexpediente`, {
-      headers: new HttpHeaders()
-        .set('Authorization', `Bearer ${token}`)
-        .set('Content-Type', 'application/json'),
-    });
+    return this.http.get<ProceedingSummaryDTO[]>(
+      `${this.url}/resumenexpediente`,
+      {
+        headers: new HttpHeaders()
+          .set('Authorization', `Bearer ${token}`)
+          .set('Content-Type', 'application/json'),
+      }
+    );
   }
 }
