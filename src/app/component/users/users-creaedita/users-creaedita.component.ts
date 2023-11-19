@@ -21,7 +21,7 @@ export class UsersCreaeditaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   usuario: Users = new Users();
   mensaje: string = '';
-  maxFecha: Date = moment().add(-1, 'days').toDate();
+  maxFecha: Date = moment().add( 'days').toDate();
 
   birthDay = new FormControl(new Date());
   
