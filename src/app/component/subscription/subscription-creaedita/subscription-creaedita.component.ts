@@ -22,7 +22,7 @@ export class SubscriptionCreaeditaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   s: Subscription = new Subscription();
   mensaje: string = '';
-  maxFecha: Date = moment().add(-1, 'days').toDate();
+  maxFecha: Date = moment().add('days').toDate();
   sub_start_date = new FormControl(new Date());
   id: number = 0;
   edicion: boolean = false;
