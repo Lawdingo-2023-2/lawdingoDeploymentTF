@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class ProceedingListarComponent implements OnInit {
   role: string = '';
+  arrPro: Proceeding[]=[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -34,13 +35,15 @@ export class ProceedingListarComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.ls.showRole();
     this.pS.list().subscribe((data) => {
-      this.listaExpedientes = data;
+      this.view(data);
+      this.listaExpedientes = this.arrPro;
 
       //this.dataSource = new MatTableDataSource(data);
       //this.dataSource.paginator = this.paginator;
     });
     this.pS.getList().subscribe((data) => {
-      this.listaExpedientes = data;
+      this.view(data);
+      this.listaExpedientes = this.arrPro;
 
       //this.dataSource = new MatTableDataSource(data);
       //this.dataSource.paginator = this.paginator;
@@ -54,6 +57,25 @@ export class ProceedingListarComponent implements OnInit {
         this.pS.setList(data);
       });
     });
+  }
+  view(data:any){
+    if(this.role == 'ABOGADO'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].lawyer.username==this.ls.showUsername()){
+          this.arrPro.push(data[i])
+        }
+      };
+    }
+    else if(this.role == 'CLIENTE'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].client.username==this.ls.showUsername()){
+          this.arrPro.push(data[i])
+        }
+      };
+    }
+    else{
+      this.arrPro = data;
+    }
   }
 
 }
