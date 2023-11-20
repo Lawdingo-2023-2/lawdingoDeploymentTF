@@ -13,7 +13,7 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class CertificationListarComponent implements OnInit{
   role: string = '';
-  arrDoc: Certification[] = [];
+  arrCer: Certification[] = [];
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -26,11 +26,11 @@ export class CertificationListarComponent implements OnInit{
     this.role = this.ls.showRole();
     this.pS.list().subscribe((data) => {
       this.view(data);
-      this.listaCertificacion = data;
+      this.listaCertificacion = this.arrCer;
     });
     this.pS.getList().subscribe((data) => {
       this.view(data);
-      this.listaCertificacion = data;
+      this.listaCertificacion = this.arrCer;
     });
   }
 
@@ -44,13 +44,13 @@ export class CertificationListarComponent implements OnInit{
   view(data:any){
     if(this.role == 'ABOGADO'){
       for(let i=0;i<data.length;i++){
-        if(data[i].proceeding.lawyer.username==this.ls.showUsername()){
-          this.arrDoc.push(data[i])
+        if(data[i].client.username==this.ls.showUsername()){
+          this.arrCer.push(data[i])
         }
       };
     }
     else{
-      this.arrDoc = data;
+      this.arrCer = data;
     }
   }
 }
