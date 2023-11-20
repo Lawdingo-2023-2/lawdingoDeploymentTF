@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class CommentListarComponent implements OnInit{
   dataSource: MatTableDataSource<Comment> = new MatTableDataSource();
+  arrCom: Comment[]=[];
   displayedColumns: string[] = [
     'codigo',
     'cliente',
@@ -31,11 +32,13 @@ export class CommentListarComponent implements OnInit{
     this.role = this.ls.showRole();
 
     this.cS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.view(data);
+      this.dataSource = new MatTableDataSource(this.arrCom);
       this.dataSource.paginator = this.paginator;
     });
     this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+      this.view(data);
+      this.dataSource = new MatTableDataSource(this.arrCom);
       this.dataSource.paginator = this.paginator;
     });
   }
@@ -50,5 +53,18 @@ export class CommentListarComponent implements OnInit{
 
   filter(en: any) {
     this.dataSource.filter = en.target.value.trim();
+  }
+
+  view(data:any){
+    if(this.role == 'ABOGADO'){
+      for(let i=0;i<data.length;i++){
+        if(data[i].lawyer.username==this.ls.showUsername()){
+          this.arrCom.push(data[i])
+        }
+      };
+    }
+    else{
+      this.arrCom = data;
+    }
   }
 }
